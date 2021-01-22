@@ -1,26 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-import {Carousel} from './Components/carouselcontainer.js'
+import {Carousel} from './components/carousel/carouselcontainer.js'
 import {
     BrowserRouter as Router,
     Switch,
     Route,
     Link
   } from "react-router-dom";
-import {ProjectPage} from './Components/projectspage.js'
-import {ExperiencePage} from './Components/experiencepage.js'
-import {HobbyPage} from './Components/hobbypage.js'
+
+
 
 function App() {
   return (
     <div className="Portfolio-App">
         <Router>
-        <Switch>
-            <Route path="/">
-                        {/* <header>
+        {/* <header>
             <hamburger></hamburger>
             <menubar></menubar>
         </header> */}
+        <Switch>
+            <Route path="/">
+
         <Carousel/>
         {/* <footer>
             <iconbar>
@@ -36,7 +36,7 @@ function App() {
             </iconbar>
         </footer> */}
             </Route>
-            <Route path="/hobby">
+            {/* <Route path="/hobby">
                 <HobbyPage/>
             </Route>
             <Route path="/project">
@@ -44,7 +44,7 @@ function App() {
             </Route>
             <Route path="/experience">
                 <ExperiencePage/>
-            </Route>
+            </Route> */}
         </Switch>
         </Router>
     </div>

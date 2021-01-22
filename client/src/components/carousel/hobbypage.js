@@ -1,8 +1,8 @@
-import './projectspage.scss';
+import './hobbypage.scss';
 import $ from "jquery"
 import React from 'react';
 
-export class ProjectPage extends React.Component {
+export class HobbyPage extends React.Component {
 
     constructor(props){
         super(props);
@@ -11,7 +11,9 @@ export class ProjectPage extends React.Component {
     render(){
         return(
             <div class="element">
-                hi everywhere
+                <img class="HOBBYBG">
+
+                </img>
             </div>
             );
     }

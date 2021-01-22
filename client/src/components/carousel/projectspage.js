@@ -2,7 +2,7 @@ import './projectspage.scss';
 import $ from "jquery"
 import React from 'react';
 
-export class HobbyPage extends React.Component {
+export class ProjectPage extends React.Component {
 
     constructor(props){
         super(props);
@@ -10,11 +10,9 @@ export class HobbyPage extends React.Component {
 
     render(){
         return(
-            <div class="element">
-                <img class="BGIMG">
+            <img class="PROJBG">
 
-                </img>
-            </div>
+            </img>
             );
     }
 

@@ -1,4 +1,4 @@
-import './projectspage.scss';
+import './exppage.scss';
 import $ from "jquery"
 import React from 'react';
 
@@ -10,9 +10,9 @@ export class ExperiencePage extends React.Component {
 
     render(){
         return(
-            <div class="element">
-                hi here
-            </div>
+            <img class="EXPBG">
+
+            </img>
             );
     }
 

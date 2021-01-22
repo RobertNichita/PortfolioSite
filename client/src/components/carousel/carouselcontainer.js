@@ -1,10 +1,10 @@
 import './carouselcontainer.scss';
 import $ from "jquery"
 import React from 'react';
-import ArrowR from "../assets/ArrowR.png"
-import ArrowL from "../assets/ArrowL.png"
+import ArrowR from "../../assets/ArrowR.png"
+import ArrowL from "../../assets/ArrowL.png"
 import {ProjectPage} from './projectspage.js'
-import {ExperiencePage} from './experiencepage.js'
+import {ExperiencePage} from './exppage.js'
 import {HobbyPage} from './hobbypage.js'
 
 export class Carousel extends React.Component {
@@ -19,8 +19,8 @@ export class Carousel extends React.Component {
         // $(".container").on('swipeleft',this.rotate("p"));
         // $("ProjectPage").on('click',this.rotate("n"));
         $(window).on('load',() => {
-            // $(".element").on('swipeRight',{d:"n"},() => this.rotate);
-            // $(".element").on('swipeLeft',{d:"p"},() => this.rotate);
+            $(document).on('swipeRight',{d:"p",state: this.state},this.rotate);
+            $(document).on('swipeLeft',{d:"n",state: this.state},this.rotate);
             $(".next").on('click',{d:"n",state: this.state}, this.rotate);
             $(".prev").on('click',{d:"p",state: this.state}, this.rotate);
             console.log($(".next"));
@@ -48,6 +48,7 @@ export class Carousel extends React.Component {
             "-o-transform": "rotateY("+state.rotation+"deg)",
             "transform": "rotateY("+state.rotation+"deg)"
         });
+        e.stopPropagation();
     }
 
     render(){

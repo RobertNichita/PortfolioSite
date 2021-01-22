@@ -1,11 +1,7 @@
-@media (max-aspect-ratio:13/9){
-    body {
-        background: #333;
-        padding: 70px 0;
-        font: 15px/20px Arial, sans-serif;
-    }
+@media (max-aspect-ratio:1/1){
     
     .container {
+        background:#333;
         overflow: hidden;
         overflow-x: hidden;
         margin: 0 auto;
@@ -65,14 +61,10 @@
 
     }
 }
-@media (min-aspect-ratio:13/9){
-    body {
-        background: #159;
-        padding: 70px 0;
-        font: 15px/20px Arial, sans-serif;
-    }
+@media (min-aspect-ratio:1/1){
     
     .container {
+        background: #159;
         overflow: hidden;
         overflow-x: hidden;
         margin: 0 auto;
@@ -95,7 +87,6 @@
         width: 100vw;
         height: 300vh;
         line-height: 200px;
-        color: #FFF;
     }
 
     @for $i from 1 through 3{
