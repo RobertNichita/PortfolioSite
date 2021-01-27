@@ -1,0 +1,48 @@
+.nav-contain{
+    position: fixed;
+    .side{
+        right:0;
+        top:0;
+    }
+
+    .bottom{
+        bottom:0;
+    }
+    
+}
+
+
+
+.react-toggle-track{
+    display:flex;
+    border-radius:30%;
+    justify-content: space-between;
+}
+
+.react-toggle--checked{
+     
+    .react-toggle-track{
+        background-color:#595959;
+        
+    }
+    
+}
+
+.react-toggle{
+    margin: 0;
+    .react-toggle-screenreader-only{
+        display: none;
+    }
+    
+    width: 3vw;
+    height: 5vh;
+    
+    flex-direction:row;
+    &:not(.react-toggle--checked){
+        .react-toggle-track{
+            background-color:#000000;
+            
+        }
+        
+    }
+}

@@ -10,7 +10,7 @@ export class ProjectPage extends React.Component {
 
     render(){
         return(
-            <img class="PROJBG">
+            <img class="PROJBG" alt="ProjectBG">
 
             </img>
             );

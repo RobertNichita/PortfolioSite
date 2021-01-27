@@ -7,7 +7,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
-
+import Navigation from './components/navigation/navbar.js'
 
 
 function App() {
@@ -20,21 +20,8 @@ function App() {
         </header> */}
         <Switch>
             <Route path="/">
-
-        <Carousel/>
-        {/* <footer>
-            <iconbar>
-                <iconbutton>
-
-                </iconbutton>
-                <iconbutton>
-
-                </iconbutton>
-                <iconbutton>
-
-                </iconbutton>
-            </iconbar>
-        </footer> */}
+                <Navigation/>
+                <Carousel/>
             </Route>
             {/* <Route path="/hobby">
                 <HobbyPage/>

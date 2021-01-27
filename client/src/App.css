@@ -1,13 +1,15 @@
-@media(min-aspect-ratio:1/1){
-    body {
-        padding: 15vh 0;
-        font: 15px/20px Arial, sans-serif;
-    }
+
+body {
+    padding: 150vh 0;
+    font: 15px/20px Arial, sans-serif;
 }
+
+
+
 
 @media(max-aspect-ratio:1/1){
     body {
-        padding: 15vh 0;
+        padding: 150vh 0;
         font: 15px/20px Arial, sans-serif;
     }
 }

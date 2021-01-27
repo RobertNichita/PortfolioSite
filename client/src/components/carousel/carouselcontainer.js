@@ -1,45 +1,61 @@
-import './carouselcontainer.scss';
+import './carouselcontainer.scss'
 import $ from "jquery"
-import React from 'react';
+import React from 'react'
 import ArrowR from "../../assets/ArrowR.png"
 import ArrowL from "../../assets/ArrowL.png"
 import {ProjectPage} from './projectspage.js'
 import {ExperiencePage} from './exppage.js'
 import {HobbyPage} from './hobbypage.js'
+import {General} from '../../utils/general.js'
+import PageIndication from './pageindication'
 
 export class Carousel extends React.Component {
 
     constructor(props){
         super(props);
         this.state = {
-            rotation : 0
+            rotation : 0,
+            front : 0,
+            root : $('html, body'),
+            self: this
         }
-        var self = this;
-        // $(".container").on('swiperight',this.rotate("n"));
-        // $(".container").on('swipeleft',this.rotate("p"));
-        // $("ProjectPage").on('click',this.rotate("n"));
+
         $(window).on('load',() => {
-            $(document).on('swipeRight',{d:"p",state: this.state},this.rotate);
-            $(document).on('swipeLeft',{d:"n",state: this.state},this.rotate);
-            $(".next").on('click',{d:"n",state: this.state}, this.rotate);
-            $(".prev").on('click',{d:"p",state: this.state}, this.rotate);
-            console.log($(".next"));
+            $('.element').on('swiperight', {d:"n",state: this.state}, this.rotate);
+            $(".next").on('click',{d:"n",n: 1, state: this.state}, this.rotate);
+            $(".prev").on('click',{d:"p",n: 1, state: this.state}, this.rotate);
+            $(window).on("scroll",{offBottom: this.props.floatOffsetBottom, state: this.state},this.positionFloat);
         })
         
-        // $("HobbyPage").on('click',this.rotate("n"));
-        // if($(".element").length){
-        //     $(".element").on("click",this.rotate("n"));
-        // }else{
-        //     console.log("no elements")
-        // }
+    }
+
+    positionFloat(e){
+        let scroll = $(window).scrollTop();
+        let carouselTop =  ($('.carousel').offset().top);
+        let floatHeight = $('.base-float').height();
+        let cssProp = {"top": ""}
+        
+        if(scroll < carouselTop - $(window).height() + floatHeight){
+            cssProp.top = 0;
+        }else if(scroll > carouselTop + $('.carousel').height() - $(window).height()){
+            cssProp.top = $('.carousel').height()-floatHeight;
+        }else{
+            cssProp.top = Math.trunc(scroll + $(window).height() - carouselTop-floatHeight);
+        }
+
+        $('.base-float').css(cssProp);
     }
 
     rotate(e){
-        var state = e.data.state;
+        let state = e.data.state;
+        let direction = e.data.d;
+        let number = e.data.n;
         if(e.data.d === "n"){
+            state.front = General.mod((state.front + 1), 3);
             state.rotation = state.rotation - 120;
         }
         if(e.data.d === "p"){
+            state.front = General.mod((state.front - 1), 3);
             state.rotation = state.rotation + 120;
         }
         $('.carousel').css({
@@ -48,6 +64,20 @@ export class Carousel extends React.Component {
             "-o-transform": "rotateY("+state.rotation+"deg)",
             "transform": "rotateY("+state.rotation+"deg)"
         });
+        let i = 0;
+        for(; i<3;i++){
+            let element = $("#"+i+".element");
+            if(i === state.front){
+                
+                element.css({"z-index":1});
+            }else{
+                element.css({"z-index":-1});
+            }
+            
+        }
+        
+        $(state.root).animate({scrollTop: $('.carousel').offset().top},300);
+        PageIndication.updatePageIndication(state.front);
         e.stopPropagation();
     }
 
@@ -56,13 +86,17 @@ export class Carousel extends React.Component {
             <div class="top">
                 <div class="container">
                     <div class="carousel">
-                        <div class="element"><ProjectPage/></div>
-                        <div class="element"><ExperiencePage/></div>
-                        <div class="element"><HobbyPage/></div>
+                        <div class="element" id="0"><ProjectPage/></div>
+                        <div class="element" id="1"><ExperiencePage/></div>
+                        <div class="element" id="2"><HobbyPage/></div>
                     </div>
                 </div>
-                <div class="next"><img src={ArrowR}/></div>
-                <div class="prev"><img src={ArrowL}/></div>
+                <div class="base-float">
+                    <div class="prev"><img src={ArrowL} alt="Left\nArrow"/></div>
+                    <PageIndication floatOffsetBottom = "0px"/>
+                    <div class="next"><img src={ArrowR} alt="Right\nArrow"/></div>
+                </div>
+
             </div>
         );
     }

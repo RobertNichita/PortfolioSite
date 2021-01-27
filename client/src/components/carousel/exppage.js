@@ -10,7 +10,7 @@ export class ExperiencePage extends React.Component {
 
     render(){
         return(
-            <img class="EXPBG">
+            <img class="EXPBG" alt="ExperienceBG">
 
             </img>
             );

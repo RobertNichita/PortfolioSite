@@ -1,118 +1,101 @@
-@media (max-aspect-ratio:1/1){
-    
-    .container {
-        background:#333;
-        overflow: hidden;
-        overflow-x: hidden;
-        margin: 0 auto;
-        width: 100vw;
-        height: 300vh;
-        position: relative;
-    }
-    
-    .carousel {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        transform-style: preserve-3d;
-        transition: transform 2s;
-    }
-    
-    .element {
-        display: block;
-        position: absolute;
-        width: 100vw;
-        height: 300vh;
-        line-height: 200px;
-        color: #FFF;
-    }
 
+.top{
+    position: relative;
+}
+
+.base-float{
+    display: flex;
+    position: absolute;
+    top:0;
+    height: 7vh;
+    width: 100%;
+    z-index: 2;
+    transition: all 0.15s ease-in-out;
+}
+
+.container {
+    background:#333;
+    overflow: hidden;
+    overflow-x: hidden;
+    margin: 0 auto;
+    width: 100vw;
+    height: 300vh;
+    position: relative;
+}
+
+.carousel {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 2s;
+}
+
+.element {
+    backface-visibility: hidden;
+    display: block;
+    position: absolute;
+    width: 100vw;
+    height: 300vh;
+    line-height: 200px;
+    color: #FFF;
+
+    
     @for $i from 1 through 3{
-        .element:nth-of-type(#{$i}) {
+
+        &:nth-of-type(#{$i}) {
+            @if ($i == 1){
+                z-index: 1;
+            } @else {
+                z-index: -1;
+            }
+
             transform: rotateY(360deg/3 * (($i)-1)) translateZ(40vw) ;
         }
     }
+    
+}
 
-    @media (hover:hover){
-        
-    .next, .prev {
+
+
+@media (hover:hover){
+    
+.next, .prev {
+    height: 7vh;
+    width: 14vw;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: box-shadow 0.1s, top 0.1s;
+}
+
+    .next:active, .prev:active {
+        bottom: 1vh;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .next { right: 3vw; }
+    .prev { left: 3vw; }
+    img{
         height: 7vh;
         width: 14vw;
-        position: fixed;
-        bottom:20vh;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: box-shadow 0.1s, top 0.1s;
-    }
-
-        .next:active, .prev:active {
-            bottom: 19vh;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .next { right: 3vw; }
-        .prev { left: 3vw; }
-        img{
-            height: 7vh;
-            width: 14vw;
-        }
-    }
-
-    @media (hover:none){
-
     }
 }
+
+@media (hover:none){
+
+}
+
+//Media query for landscape orientation
 @media (min-aspect-ratio:1/1){
     
     .container {
         background: #159;
-        overflow: hidden;
-        overflow-x: hidden;
-        margin: 0 auto;
-        width: 100vw;
-        height: 300vh;
-        position: relative;
     }
     
-    .carousel {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        transform-style: preserve-3d;
-        transition: transform 2s;
-    }
-    
-    .element {
-        display: block;
-        position: absolute;
-        width: 100vw;
-        height: 300vh;
-        line-height: 200px;
-    }
-
-    @for $i from 1 through 3{
-        .element:nth-of-type(#{$i}) {
-            transform: rotateY(360deg/3 * (($i)-1)) translateZ(40vw) ;
-        }
-    }
-
-
-
-
     @media (hover:hover){
         
         .next, .prev {
             height: 7vh;
             width: 7vw;
-            position: fixed;
-            bottom:20vh;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: box-shadow 0.1s, top 0.1s;
-        }
-
-        .next:active, .prev:active {
-            bottom: 19vh;
-            -webkit-tap-highlight-color: transparent;
         }
 
         .next { right: 1vw; }

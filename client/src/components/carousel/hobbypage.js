@@ -10,11 +10,9 @@ export class HobbyPage extends React.Component {
 
     render(){
         return(
-            <div class="element">
-                <img class="HOBBYBG">
+            <img class="HOBBYBG" alt="HOBBYBG">
 
-                </img>
-            </div>
+            </img>
             );
     }
 
