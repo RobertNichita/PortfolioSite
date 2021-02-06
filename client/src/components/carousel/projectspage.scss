@@ -2,3 +2,9 @@
     height: 300vw;
     width: 100vw;
 }
+
+@media (min-aspect-ratio:1/1){
+    .PROJBGBG{
+        width: 90vw;
+    }  
+}

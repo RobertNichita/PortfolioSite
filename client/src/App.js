@@ -8,34 +8,24 @@ import {
     Link
   } from "react-router-dom";
 import Navigation from './components/navigation/navbar.js'
+import Footer from "./components/footer.js"
+import Landing from "./components/landing.js"
 
 
 function App() {
   return (
     <div className="Portfolio-App">
         <Router>
-        {/* <header>
-            <hamburger></hamburger>
-            <menubar></menubar>
-        </header> */}
-        <Switch>
-            <Route path="/">
-                <Navigation/>
-                <Carousel/>
-            </Route>
-            {/* <Route path="/hobby">
-                <HobbyPage/>
-            </Route>
-            <Route path="/project">
-                <ProjectPage/>
-            </Route>
-            <Route path="/experience">
-                <ExperiencePage/>
-            </Route> */}
-        </Switch>
+            <Switch>
+                <Route path="/">
+                    <Navigation/> 
+                    <Landing/>
+                    <Carousel/>
+                    <Footer/>
+                </Route>
+            </Switch>
         </Router>
     </div>
-
   );
 }
 

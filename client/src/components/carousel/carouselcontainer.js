@@ -17,31 +17,53 @@ export class Carousel extends React.Component {
             rotation : 0,
             front : 0,
             root : $('html, body'),
-            self: this
+            self: this,
+            landscape:false
         }
 
+        
+
         $(window).on('load',() => {
+            this.isLandscape(this);
+            this.positionFloat({},this);
+            $(window).on('resize',(e) => this.positionFloat(e, this));
             $('.element').on('swiperight', {d:"n",state: this.state}, this.rotate);
             $(".next").on('click',{d:"n",n: 1, state: this.state}, this.rotate);
             $(".prev").on('click',{d:"p",n: 1, state: this.state}, this.rotate);
-            $(window).on("scroll",{offBottom: this.props.floatOffsetBottom, state: this.state},this.positionFloat);
+            $(window).on("scroll",{offBottom: this.props.floatOffsetBottom, state: this.state},(e) => this.positionFloat(e, this));
         })
         
     }
 
-    positionFloat(e){
+    isLandscape(self){
+        if($(window).width() > $(window).height()){
+            self.state.landscape = true;
+        }else{
+            self.state.landscape = false;
+        }
+    }
+
+    positionFloat(e, self){
         let scroll = $(window).scrollTop();
-        let carouselTop =  ($('.carousel').offset().top);
+        let carouselTop =  ($('.carousel_').offset().top);
+        let carouselHeight = $('.carousel_').height();
         let floatHeight = $('.base-float').height();
         let cssProp = {"top": ""}
+        self.isLandscape(self)
+        let mediaQueryBuffer = ( self.state.landscape? 0 : 0.1);
+        let windowHeight = $(window).height();
         
-        if(scroll < carouselTop - $(window).height() + floatHeight){
+        if(scroll < carouselTop - windowHeight + floatHeight + mediaQueryBuffer*windowHeight){
             cssProp.top = 0;
-        }else if(scroll > carouselTop + $('.carousel').height() - $(window).height()){
-            cssProp.top = $('.carousel').height()-floatHeight;
+        }else if(scroll > carouselTop + carouselHeight - windowHeight){
+            cssProp.top = carouselHeight - floatHeight;
         }else{
-            cssProp.top = Math.trunc(scroll + $(window).height() - carouselTop-floatHeight);
+            cssProp.top = Math.trunc(scroll + windowHeight - carouselTop-floatHeight);
         }
+
+        console.log(mediaQueryBuffer)
+
+        cssProp.top -= mediaQueryBuffer*windowHeight;
 
         $('.base-float').css(cssProp);
     }
@@ -50,15 +72,15 @@ export class Carousel extends React.Component {
         let state = e.data.state;
         let direction = e.data.d;
         let number = e.data.n;
-        if(e.data.d === "n"){
-            state.front = General.mod((state.front + 1), 3);
+        if(direction === "n"){
+            state.front = General.mod((state.front + number), 3);
             state.rotation = state.rotation - 120;
         }
-        if(e.data.d === "p"){
-            state.front = General.mod((state.front - 1), 3);
+        if(direction === "p"){
+            state.front = General.mod((state.front - number), 3);
             state.rotation = state.rotation + 120;
         }
-        $('.carousel').css({
+        $('.carousel_').css({
             "-webkit-transform": "rotateY("+state.rotation+"deg)",
             "-moz-transform": "rotateY("+state.rotation+"deg)",
             "-o-transform": "rotateY("+state.rotation+"deg)",
@@ -71,12 +93,13 @@ export class Carousel extends React.Component {
                 
                 element.css({"z-index":1});
             }else{
+
                 element.css({"z-index":-1});
             }
             
         }
         
-        $(state.root).animate({scrollTop: $('.carousel').offset().top},300);
+        $(state.root).animate({scrollTop: $('.carousel_').offset().top},300);
         PageIndication.updatePageIndication(state.front);
         e.stopPropagation();
     }
@@ -84,8 +107,8 @@ export class Carousel extends React.Component {
     render(){
         return(
             <div class="top">
-                <div class="container">
-                    <div class="carousel">
+                <div class="container_">
+                    <div class="carousel_">
                         <div class="element" id="0"><ProjectPage/></div>
                         <div class="element" id="1"><ExperiencePage/></div>
                         <div class="element" id="2"><HobbyPage/></div>

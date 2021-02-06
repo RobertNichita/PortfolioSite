@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav';
 import Toggle from 'react-toggle'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
@@ -21,13 +19,14 @@ export default class Navigation extends React.Component {
 
     render(){
         return (
-            <Navbar class="nav-contain side" bg="light">
-                <Nav.Link><FontAwesomeIcon icon=""/>About Me</Nav.Link>
-                <Nav.Link><FontAwesomeIcon icon=""/>Projects</Nav.Link>
-                <Nav.Link><FontAwesomeIcon icon=""/>Experience</Nav.Link>
-                <Nav.Link><FontAwesomeIcon icon=""/>Hobbies</Nav.Link>
+            <div className="nav-contain clamp">
+                <a href="#home">Robert Nichita</a>
+                <a href="#aboutme">About Me</a>
+                <a href="#projects">Projects</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Hobbies</a>
                 <Toggle icons={{checked: <FontAwesomeIcon icon={faMoon} color="#289db8"/>, unchecked : <FontAwesomeIcon icon={faSun} color="#dee856"/>}}/>
-            </Navbar>
+            </div>
         )
     }
 }
