@@ -1,10 +1,12 @@
-.EXPBG{
-    height: 300vw;
-    width: 100vw;
+.EXPBG {
+	height: 300vw;
+	width: 100vw;
+	color: var(--TEXT);
+	left: auto;
 }
 
-@media (min-aspect-ratio:1/1){
-    .EXPBG{
-        width: 90vw;
-    }  
+@media (min-aspect-ratio: 1/1) {
+	.EXPBG {
+		width: 90vw;
+	}
 }

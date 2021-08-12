@@ -1,10 +1,14 @@
-.PROJBG{
-    height: 300vw;
-    width: 100vw;
+.PROJBG {
+	height: 300vw;
+	width: 100vw;
+	color: var(--TEXT2);
+	font-family: var(--Font1);
+	font-weight: 800;
+	font-size: 1em;
 }
 
-@media (min-aspect-ratio:1/1){
-    .PROJBGBG{
-        width: 90vw;
-    }  
+@media (min-aspect-ratio: 1/1) {
+	.PROJBGBG {
+		width: 90vw;
+	}
 }

@@ -1,10 +1,11 @@
-.HOBBYBG{
-    height: 300vw;
-    width: 100vw;
+.HOBBYBG {
+	height: 300vw;
+	width: 100vw;
+	color: var(--TEXT);
 }
 
-@media (min-aspect-ratio:1/1){
-    .HOBBYBG{
-        width: 90vw;
-    }  
+@media (min-aspect-ratio: 1/1) {
+	.HOBBYBG {
+		width: 90vw;
+	}
 }
