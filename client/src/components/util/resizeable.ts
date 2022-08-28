@@ -30,6 +30,7 @@ export default class Resizeable<innerProps, innerState> extends React.Component<
 		this.unsubscribe = store.subscribe(() => {
 			let storeState = store.getState();
 			let landscape = isLandscape(storeState.w, storeState.h);
+			$(':root')[0].dataset.landscape = (landscape ? 'landscape' : 'portrait');
 			console.log(`storeState:${JSON.stringify(storeState)}`);
 			this.setState({
 				width: (storeState.w * (!landscape ? this.wPercent[0] : this.wPercent[1]) * 0.01).toString() + 'px',
@@ -43,6 +44,6 @@ export default class Resizeable<innerProps, innerState> extends React.Component<
 	}
 
 	getStyle = () => {
-		return { height: this.state.height, width: this.state.width };
+		return { height: this.state.height, width: this.state.width};
 	};
 }

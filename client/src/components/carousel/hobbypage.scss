@@ -4,7 +4,8 @@
 	color: var(--TEXT);
 }
 
-@media (min-aspect-ratio: 1/1) {
+// @media (min-aspect-ratio: 1/1) {
+[data-landscape=landscape]{
 	.HOBBYBG {
 		width: 90vw;
 	}

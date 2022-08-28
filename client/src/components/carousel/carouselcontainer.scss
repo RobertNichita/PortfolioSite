@@ -82,7 +82,8 @@
 }
 
 //Media query for landscape orientation
-@media (min-aspect-ratio: 1/1) {
+// @media (min-aspect-ratio: 1/1) {
+[data-landscape=landscape]{
 	.base-float {
 		width: 90vw;
 		bottom: 0;

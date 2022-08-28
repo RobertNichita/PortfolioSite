@@ -5,7 +5,8 @@
 	left: auto;
 }
 
-@media (min-aspect-ratio: 1/1) {
+// @media (min-aspect-ratio: 1/1) {
+[data-landscape=landscape]{
 	.EXPBG {
 		width: 90vw;
 	}

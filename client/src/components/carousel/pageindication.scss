@@ -21,7 +21,8 @@
 	transition: none;
 }
 
-@media (max-aspect-ratio: 1/1) {
+// @media (max-aspect-ratio: 1/1) {
+[data-landscape=portrait]{
 	.contain {
 		height: 100%;
 		width: 40%;
