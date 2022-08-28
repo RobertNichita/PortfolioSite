@@ -6,7 +6,7 @@
 .base-float {
 	display: flex;
 	position: sticky;
-	bottom: 0;
+	bottom: 10vh;
 	height: 7vh;
 	width: 100%;
 	z-index: 2;
@@ -85,6 +85,7 @@
 @media (min-aspect-ratio: 1/1) {
 	.base-float {
 		width: 90vw;
+		bottom: 0;
 	}
 
 	.container_ {

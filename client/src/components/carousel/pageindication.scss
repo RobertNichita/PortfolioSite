@@ -5,7 +5,7 @@
 	border-radius: 40%;
 	margin-left: auto;
 	margin-right: auto;
-	flex-direction: horizontal;
+	flex-direction: row;
 	display: flex;
 }
 
@@ -19,4 +19,17 @@
 		background-color: var(--MG2);
 	}
 	transition: none;
+}
+
+@media (max-aspect-ratio: 1/1) {
+	.contain {
+		height: 100%;
+		width: 40%;
+		background-color: var(--FG);
+		border-radius: 40%;
+		margin-left: auto;
+		margin-right: auto;
+		flex-direction: row;
+		display: flex;
+	}
 }
