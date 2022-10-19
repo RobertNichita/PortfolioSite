@@ -1,5 +1,6 @@
 body {
 	padding: 150vh 0;
+	margin: 0 2vw;
 	font: 15px/20px Arial, sans-serif;
 }
 
@@ -13,7 +14,7 @@ h1 {
 
 :root {
 	--BG: #010400ff;
-	--FG: #30332eff;
+	--FG: #19424D;
 	--MG: #d2a669ff;
 	--MG2: rgb(189, 149, 93);
 	--TEXT: #ab4190ff;
