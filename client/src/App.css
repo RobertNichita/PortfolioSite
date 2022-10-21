@@ -1,6 +1,5 @@
 body {
 	padding: 150vh 0;
-	margin: 0 2vw;
 	font: 15px/20px Arial, sans-serif;
 }
 
@@ -13,37 +12,38 @@ h1 {
 }
 
 :root {
-	--BG: #010400ff;
-	--FG: #19424D;
-	--MG: #d2a669ff;
-	--MG2: rgb(189, 149, 93);
-	--TEXT: #ab4190ff;
-	--TEXT2: #0b7a75ff;
+	--BG: #3f3649;
+	--FG: #0e052e;
+	--FG2: #27212d;
+	--TEXT: #d3bddb;
+	--TEXT2: #bc88cf;
 	--BLACK: #010400ff;
 	--WHITE: #ecffe6;
-	--Font1: 'ralewaythin';
-	--Font2: 'maliregular';
+	--Font1: "ralewaythin";
+	--Font2: "maliregular";
 }
 
 [data-theme='light'] {
-	--BG: #ecffe6;
-	--FG: rgb(167, 173, 163);
-	--MG: #d2a669ff;
-	--TEXT: #ab4190ff;
-	--TEXT2: #0b7a75ff;
+	--BG: #8ccbd9;
+	--FG: #266473;
+	--FG2: #0e252b;
+	--TEXT: #1f0079;
+	--TEXT2: #8ccbd9;
 }
 
 @font-face {
-	font-family: 'maliregular';
-	src: url('./assets/Fonts/webfontkit-Mali/mali-regular-webfont.woff2') format('woff2'),
+	font-family: maliregular;
+	src:
+		url('./assets/Fonts/webfontkit-Mali/mali-regular-webfont.woff2') format('woff2'),
 		url('./assets/Fonts/webfontkit-Mali/mali-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
-	font-family: 'ralewaythin';
-	src: url('./assets/Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff2') format('woff2'),
+	font-family: ralewaythin;
+	src:
+		url('./assets/Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff2') format('woff2'),
 		url('./assets/Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;

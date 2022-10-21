@@ -59,6 +59,8 @@
     "@types/react-toggle": "^4.0.3",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "stylelint": "^14.14.0",
+    "stylelint-config-standard-scss": "^5.0.0"
   }
 }

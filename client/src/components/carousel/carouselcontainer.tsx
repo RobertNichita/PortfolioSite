@@ -1,8 +1,8 @@
 import './carouselcontainer.scss';
 import $ from 'jquery';
 import React, { EventHandler } from 'react';
-import ArrowR from '../../assets/Icons/ArrowR.png';
-import ArrowL from '../../assets/Icons/ArrowL.png';
+import ArrowR from '../../assets/Icons/arrowR_transp.png';
+import ArrowL from '../../assets/Icons/arrowL_transp.png';
 import { ProjectPage } from './projectspage';
 import { ExperiencePage } from './exppage';
 import { HobbyPage } from './hobbypage';
@@ -46,7 +46,7 @@ export class Carousel extends Resizeable<Props, State> {
 
 		let containerbottom = container.getBoundingClientRect().bottom;
 		let floatbottom = float.getBoundingClientRect().bottom;
-		if (floatbottom + basefloat.height()! / 2 > containerbottom) {
+		if (floatbottom > containerbottom) {
 			basefloat.css({ visibility: 'hidden' });
 		} else {
 			basefloat.css({ visibility: 'inherit' });
@@ -93,24 +93,26 @@ export class Carousel extends Resizeable<Props, State> {
 					<div style={{ position: 'relative', width: '100%', height: '100%' }}>
 						<div className="carousel_">
 							<div className="element" id="0" style={{ width: this.state.width }}>
-								<ProjectPage wPercent={[100, 90]} hPercent={[300, 300]} />
+								<ProjectPage wPercent={[100, 88.5]} hPercent={[100, 100]} />
 							</div>
 							<div className="element" id="1" style={{ width: this.state.width }}>
-								<ExperiencePage wPercent={[100, 90]} hPercent={[300, 300]} />
+								<ExperiencePage wPercent={[100, 88.5]} hPercent={[100, 100]} />
 							</div>
 							<div className="element" id="2" style={{ width: this.state.width }}>
-								<HobbyPage wPercent={[100, 90]} hPercent={[300, 300]} />
+								<HobbyPage wPercent={[100, 88.5]} hPercent={[100, 100]} />
 							</div>
 						</div>
 					</div>
 				</div>
 				<div className="base-float">
-					<div className="prev">
-						<img src={ArrowL} alt="Left\nArrow" />
-					</div>
-					<PageIndication />
-					<div className="next">
-						<img src={ArrowR} alt="Right\nArrow" />
+					<div className="float-wrap">
+						<div className="prev">
+							<img src={ArrowL} alt="Left\nArrow" />
+						</div>
+						<PageIndication />
+						<div className="next">
+							<img src={ArrowR} alt="Right\nArrow" />
+						</div>
 					</div>
 				</div>
 			</div>

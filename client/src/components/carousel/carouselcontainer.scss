@@ -4,22 +4,33 @@
 }
 
 .base-float {
-	display: flex;
 	position: sticky;
-	bottom: 10vh;
-	height: 7vh;
+	bottom: 7vh;
+	width: 30vw;
+	height: 10vh;
 	width: 100%;
 	z-index: 2;
 	transition: all 0.1s ease-in-out;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.float-wrap{
+	display: flex;
+	width: 30vw;
+	height: 7vh;
+	z-index: 2;
 }
 
 .container_ {
-	background: var(--BG);
+	background: var(--FG);
 	overflow: hidden;
 	overflow-x: hidden;
 	margin-right: auto;
 	width: 100vw;
-	height: 300vh;
+	height: 100vh;
 	position: relative;
 }
 
@@ -51,58 +62,57 @@
 	}
 }
 
+.element .base{
+	background-image: url("../../assets/Images/NicePng_torn-paper-texture-png_cropped.png");
+	background-size: cover;
+	background-repeat: repeat-y;
+	position: absolute;
+	opacity: 0.3;
+}
+
 @media (hover: hover) {
 	.next,
 	.prev {
-		height: 7vh;
-		width: 14vw;
+		height: 4vh;
+		width: 2vw;
 		cursor: pointer;
 		border-radius: 5px;
 		transition: box-shadow 0.1s, top 0.1s;
 	}
-
-	.next:active,
-	.prev:active {
-		bottom: 1vh;
-		-webkit-tap-highlight-color: transparent;
-	}
-	.next {
-		right: 3vw;
-	}
-	.prev {
-		left: 3vw;
-	}
+	
 	img {
-		height: 7vh;
-		width: 14vw;
+		height: 4vh;
+		width: 2vw;
 	}
 }
 
 @media (hover: none) {
 }
 
-//Media query for landscape orientation
-// @media (min-aspect-ratio: 1/1) {
 [data-landscape=landscape]{
 	.base-float {
 		width: 90vw;
-		bottom: 0;
+		bottom: 3vh;
+	}
+
+	.float-wrap{
+		width: 25vw;
+		height: 7vh;
 	}
 
 	.container_ {
-		background: var(--BG);
-		width: 90vw;
+		width: 85vw;
 	}
 
 	.element {
-		width: 90vw;
+		width: 85vw;
 	}
 
 	@media (hover: hover) {
 		.next,
 		.prev {
 			height: 7vh;
-			width: 7vw;
+			width: 3vw;
 		}
 
 		.next {
@@ -114,7 +124,7 @@
 
 		img {
 			height: 7vh;
-			width: 7vw;
+			width: 3vw;
 		}
 	}
 

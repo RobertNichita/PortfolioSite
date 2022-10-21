@@ -1,13 +1,17 @@
 .EXPBG {
-	height: 300vw;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	color: var(--TEXT);
-	left: auto;
+}
+
+.base {
+	width: 100%;
+	height: 100%;
 }
 
 // @media (min-aspect-ratio: 1/1) {
 [data-landscape=landscape]{
-	.EXPBG {
-		width: 90vw;
-	}
+	// .EXPBG {
+	// 	width: 100;
+	// }
 }

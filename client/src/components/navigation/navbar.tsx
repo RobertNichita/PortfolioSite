@@ -1,6 +1,5 @@
 import React, { ChangeEvent, ChangeEventHandler, useState } from 'react';
-import Toggle from 'react-toggle';
-import $ from 'jquery';
+import Toggle from './toggle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import './navbar.scss';
@@ -8,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { getWindowSizeSelector } from '../../redux/Slices/WindowSize';
 import store from '../../redux/Store/store';
 import Resizable, { ResizableProps, ResizableState } from '../util/resizeable';
+import NavIcon from './mask-icon'
 
 type Props = ResizableProps;
 
@@ -23,40 +23,42 @@ export default class Navigation extends Resizable<Props, State> {
 		this.setState({ ...this.state, isToggled: false });
 	}
 
-	getRoot = (): JQuery<HTMLElement> => {
-		return $(':root');
-	};
 
-	handleToggle: ChangeEventHandler<HTMLInputElement> = (e: ChangeEvent<HTMLInputElement>): void => {
-		let theme: string = e.target.checked ? 'light' : '';
-		let root = this.getRoot()[0];
-		root.dataset.theme = theme;
-	};
+
+
 
 	render() {
 		console.log('rerendered navbar');
 		return (
 			<div className="nav-contain clamp" style={this.getStyle()}>
-				<a href="#home" className="navbarIcon nav">
-					RN
+				<a href="#home" className="navbarHamburger nav">
+					<div></div>
+					<div></div>
+					<div></div>	
 				</a>
 				<a href="#aboutme" className="navbarText nav">
-					About
+					<div>About</div>
 				</a>
 				<a href="#projects" className="navbarText nav">
-					Projects
+					<div>Projects</div>
 				</a>
 				<a href="#experience" className="navbarText nav">
-					Experience
+					<div>Experience</div>
 				</a>
 				<a href="#hobbies" className="navbarText nav">
-					Hobbies
+					<div>Hobbies</div>
 				</a>
+				
+				<div className='icons'>
+					<NavIcon iconName="github" ></NavIcon>
+					<NavIcon iconName="linkedin"></NavIcon>
+					<NavIcon iconName="brand"></NavIcon>
+				</div>
+
 				<Toggle
-					onChange={this.handleToggle}
 					icons={{
-						checked: <FontAwesomeIcon icon={faMoon} color="#289db8" />,
-						unchecked: <FontAwesomeIcon icon={faSun} color="#dee856" />,
+						checked: <FontAwesomeIcon icon={faMoon} color="#ecffe6" style={{height:"300%", width:"300%"}}/>,
+						unchecked: <FontAwesomeIcon icon={faSun} color="#b8c415" style={{height:"300%", width:"300%"}}/>,
 					}}
 				/>
 			</div>

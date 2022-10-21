@@ -1,12 +1,12 @@
 .HOBBYBG {
-	height: 300vw;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	color: var(--TEXT);
+	// padding: 2%;
 }
 
-// @media (min-aspect-ratio: 1/1) {
 [data-landscape=landscape]{
-	.HOBBYBG {
-		width: 90vw;
-	}
+	// .HOBBYBG {
+	// 	width: 90vw;
+	// }
 }

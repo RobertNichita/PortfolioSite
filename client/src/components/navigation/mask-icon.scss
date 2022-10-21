@@ -1,0 +1,32 @@
+.navIcon{
+    background-color: var(--BG);
+    transition: size 3s, position 3s, background-color 3s;
+    mask-mode: alpha;
+    mask-clip: content-box;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    width: 25%;
+    height: 44%;
+    mask-position: center;
+    margin:auto
+}
+
+.github{
+    mask-image: url(../../assets/Icons/Social/github_transparent.png);
+}
+
+.linkedin{
+    mask-image: url(../../assets/Icons/Social/linkedin_transparent.png);
+}
+
+.brand{
+    mask-image: url(../../assets/Icons/Social/brand_transparent.png);
+}
+
+[data-landscape=portrait]{
+    .navIcon{
+        margin: auto;
+        width: 15%;
+        height: 100%;
+    }
+}

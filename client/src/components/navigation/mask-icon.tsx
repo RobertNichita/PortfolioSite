@@ -1,19 +1,23 @@
-import './navbar.scss';
-import Resizable, { ResizableProps, ResizableState } from '../util/resizeable';
+import './mask-icon.scss';
+import React from 'react';
 
-type Props = ResizableProps & {
+type Props = {
     iconName: string
 };
 
-type State = ResizableState;
+type State = {};
 
-export default class NavIcon extends Resizable<Props, State> {
+export default class NavIcon extends React.Component<Props, State> {
+    links: {[index:string]:string}  = {
+        "github":"https://github.com/RobertNichita",
+        "linkedin":"https://www.linkedin.com/in/robert-nichita-846075115/",
+        "brand":"#aboutme",
+    }
 
 	render() {
 		return (
-            <div className="navIcon">
-                <div className={`innerIcon ${this.props.iconName}`}></div>
-            </div>
+            <a href={this.links[`${this.props.iconName}`]} target={this.props.iconName === "brand"? "" : `_blank`} className={`navIcon ${this.props.iconName}`} rel="noreferrer">
+            </a>
 		);
 	}
 }

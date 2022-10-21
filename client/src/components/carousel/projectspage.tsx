@@ -14,6 +14,8 @@ export class ProjectPage extends Resizeable<Props,State> {
 	}
 	
 	render() {
-		return <img className="PROJBG" alt="ProjectBG" style = {this.getStyle()}></img>;
+		return <div className="PROJBG" style = {{...this.getStyle(), margin:0}}>
+			<div className="base" style={{...this.getStyle(), margin:0}}/>
+		</div>;
 	}
 }

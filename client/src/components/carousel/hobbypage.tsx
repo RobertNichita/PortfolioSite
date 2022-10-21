@@ -14,6 +14,8 @@ export class HobbyPage extends Resizeable<Props,State> {
 	}
 
 	render() {
-		return <img className="HOBBYBG" alt="HOBBYBG"></img>;
+		return <div className="HOBBYBG" style={{...this.getStyle(), margin:0}}>
+			<div className="base" style={{...this.getStyle(), margin:0}}/>
+		</div>;
 	}
 }

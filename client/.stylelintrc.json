@@ -1,0 +1,8 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "indentation": "tab",
+    "string-quotes": null,
+    "custom-property-pattern": null
+  }
+}

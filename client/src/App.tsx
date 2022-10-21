@@ -44,7 +44,7 @@ function App() {
 							</RootResize>
 							<Navigation wPercent={[100,10]} hPercent={[10,100]}/>
 							<Landing />
-							<Carousel floatOffsetBottom={0} wPercent={[100,90]} hPercent={[300,300]}/>
+							<Carousel floatOffsetBottom={0} wPercent={[100,88.5]} hPercent={[300,300]}/>
 							<Footer />
 						</Route>
 					</Switch>
