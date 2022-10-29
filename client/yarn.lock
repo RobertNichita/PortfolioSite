@@ -1662,6 +1662,18 @@
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   "version" "0.0.29"
 
+"@types/lodash.debounce@^4.0.7":
+  "integrity" "sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA=="
+  "resolved" "https://registry.npmjs.org/@types/lodash.debounce/-/lodash.debounce-4.0.7.tgz"
+  "version" "4.0.7"
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*", "@types/lodash@^4.14.186":
+  "integrity" "sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw=="
+  "resolved" "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.186.tgz"
+  "version" "4.14.186"
+
 "@types/minimatch@*":
   "integrity" "sha512-1z8k4wzFnNjVK/tlxvrWuK5WMt6mydWWP7+zvH5eFep4oj+UkrfiJTRtjCeBXNpwaA/FYqqtb4/QS4ianFpIRA=="
   "resolved" "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.4.tgz"
@@ -1801,6 +1813,11 @@
   "version" "3.13.0"
   dependencies:
     "source-map" "^0.6.1"
+
+"@types/webpack-env@^1.18.0":
+  "integrity" "sha512-56/MAlX5WMsPVbOg7tAxnYvNYMMWr/QJiIp6BxVSW3JJXUVzzOn64qW8TzQyMSqSUFM2+PVI4aUHcHOzIz/1tg=="
+  "resolved" "https://registry.npmjs.org/@types/webpack-env/-/webpack-env-1.18.0.tgz"
+  "version" "1.18.0"
 
 "@types/webpack-sources@*":
   "version" "2.1.0"
@@ -7125,6 +7142,8 @@
   "version" "4.5.0"
 
 "lodash@^4.0.0", "lodash@^4.17.11", "lodash@^4.17.14", "lodash@^4.17.15", "lodash@^4.17.19", "lodash@^4.17.20", "lodash@^4.17.21", "lodash@^4.17.5", "lodash@^4.7.0", "lodash@>=3.5 <5", "lodash@~4.17.10":
+  "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
+  "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   "version" "4.17.21"
 
 "loglevel@^1.6.8":

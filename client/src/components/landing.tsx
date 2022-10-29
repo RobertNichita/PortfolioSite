@@ -1,11 +1,15 @@
 import "./landing.scss"
 import React from 'react'
+import Resizeable, { ResizableProps, ResizableState } from "./util/resizeable"
 
-export default class Landing extends React.Component {
+type Props = ResizableProps;
+type State = ResizableState;
+
+export default class Landing extends Resizeable<Props, State> {
 
     render() {
         return (
-            <div>
+            <div className="landing" style={this.getStyle()}>
 
             </div>
         )

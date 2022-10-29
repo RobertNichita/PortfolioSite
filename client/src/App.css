@@ -1,5 +1,4 @@
 body {
-	padding: 150vh 0;
 	font: 15px/20px Arial, sans-serif;
 }
 
@@ -20,7 +19,7 @@ h1 {
 	--BLACK: #010400ff;
 	--WHITE: #ecffe6;
 	--Font1: "ralewaythin";
-	--Font2: "maliregular";
+	--Font2: "Inter";
 }
 
 [data-theme='light'] {
@@ -34,8 +33,8 @@ h1 {
 @font-face {
 	font-family: maliregular;
 	src:
-		url('./assets/Fonts/webfontkit-Mali/mali-regular-webfont.woff2') format('woff2'),
-		url('./assets/Fonts/webfontkit-Mali/mali-regular-webfont.woff') format('woff');
+		url('./Fonts/webfontkit-Mali/mali-regular-webfont.woff2') format('woff2'),
+		url('./Fonts/webfontkit-Mali/mali-regular-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -43,8 +42,18 @@ h1 {
 @font-face {
 	font-family: ralewaythin;
 	src:
-		url('./assets/Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff2') format('woff2'),
-		url('./assets/Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff') format('woff');
+		url('./Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff2') format('woff2'),
+		url('./Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Inter;
+	src:
+		url('./Fonts/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype'),
+		url('./Fonts/Inter/Inter-Regular.woff') format('woff'),
+		url('./Fonts/Inter/Inter-Regular.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
 }

@@ -28,7 +28,6 @@ export default class Navigation extends Resizable<Props, State> {
 
 
 	render() {
-		console.log('rerendered navbar');
 		return (
 			<div className="nav-contain clamp" style={this.getStyle()}>
 				<a href="#home" className="navbarHamburger nav">

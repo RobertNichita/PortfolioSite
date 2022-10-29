@@ -31,7 +31,6 @@ export default class Resizeable<innerProps, innerState> extends React.Component<
 			let storeState = store.getState();
 			let landscape = isLandscape(storeState.w, storeState.h);
 			$(':root')[0].dataset.landscape = (landscape ? 'landscape' : 'portrait');
-			console.log(`storeState:${JSON.stringify(storeState)}`);
 			this.setState({
 				width: (storeState.w * (!landscape ? this.wPercent[0] : this.wPercent[1]) * 0.01).toString() + 'px',
 				height: (storeState.h * (!landscape ? this.hPercent[0] : this.hPercent[1]) * 0.01).toString() + 'px',

@@ -1,0 +1,36 @@
+.card{
+    height: 25vh;
+    width: 23vw;
+    background-color: var(--BG);
+    border-radius: 23%/ 30%;
+    text-decoration: none;
+    margin: 5vh 3vw;
+    color:inherit;
+    z-index: inherit;
+    transition: color 3s, background-color 3s;
+}
+
+.description{
+    text-align: center;
+    font-family: var(--Font2);
+    font-size: 150%;
+    font-weight: bold;
+    padding: 6%;
+}
+
+.picture{
+    height: 70%;
+    border-radius: 20% 20% 0% 0%/42% 42% 0% 0%;
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+[data-landscape=portrait]
+{
+    .card{
+        width: 50vw;
+        height: 25vh;
+        margin: 6vh 0;
+    }
+}

@@ -1,14 +1,13 @@
 import './carouselcontainer.scss';
 import $ from 'jquery';
-import React, { EventHandler } from 'react';
-import ArrowR from '../../assets/Icons/arrowR_transp.png';
-import ArrowL from '../../assets/Icons/arrowL_transp.png';
-import { ProjectPage } from './projectspage';
-import { ExperiencePage } from './exppage';
-import { HobbyPage } from './hobbypage';
+import React, { EventHandler, useCallback } from 'react';
 import { General } from '../../utils/general';
 import PageIndication from './pageindication';
 import Resizeable, { ResizableProps, ResizableState } from '../util/resizeable';
+import CarouselPage from './carouselpage'
+import CardGrid from './cardgrid'
+import debounce from 'lodash.debounce';
+import ReactDOM from 'react-dom';
 
 type Props = { floatOffsetBottom: number } & ResizableProps;
 type State = {
@@ -20,6 +19,16 @@ type State = {
 } & ResizableState;
 
 export class Carousel extends Resizeable<Props, State> {
+	
+	private resizeContainer = () => {
+		let container = $(".container_");
+		console.log('a' + this.state.front)
+		let BG = $('#' + this.state.front + '.element .BG .content .cardgrid');
+		let bheight = BG.height();
+		container.css({'height':`${bheight! + 200}px`});
+	}
+
+	private debouncedResizeContainer = debounce(this.resizeContainer,50,{trailing:true});
 	constructor(props: Props) {
 		super(props);
 		this.state = {
@@ -32,10 +41,11 @@ export class Carousel extends Resizeable<Props, State> {
 		};
 
 		$(window).on('load', () => {
-			$('top').on('swiperight', { d: 'n', state: this.state }, this.rotate);
-			$('.next').on('click', { d: 'n', n: 1, state: this.state }, this.rotate);
-			$('.prev').on('click', { d: 'p', n: 1, state: this.state }, this.rotate);
-			$(window).on('scroll', {}, this.hideBaseFloat);
+			$('top').on('swiperight', { d: 'n'}, this.rotate);
+			$('.next').on('click', { d: 'n', n: 1 }, this.rotate);
+			$('.prev').on('click', { d: 'p', n: 1 }, this.rotate);
+			// $(window).on('scroll', {}, this.hideBaseFloat);
+			$(window).on('resize',this.debouncedResizeContainer);
 		});
 	}
 
@@ -53,37 +63,44 @@ export class Carousel extends Resizeable<Props, State> {
 		}
 	};
 
-	rotate(e: any) {
-		let state = e.data.state;
+
+
+	rotate = (e: any) => {
 		let direction = e.data.d;
 		let number = e.data.n;
-		if (direction === 'n') {
-			state.front = General.mod(state.front + number, 3);
-			state.rotation = state.rotation - 120;
-		}
-		if (direction === 'p') {
-			state.front = General.mod(state.front - number, 3);
-			state.rotation = state.rotation + 120;
-		}
-		$('.carousel_').css({
-			'-webkit-transform': 'rotateY(' + state.rotation + 'deg)',
-			'-moz-transform': 'rotateY(' + state.rotation + 'deg)',
-			'-o-transform': 'rotateY(' + state.rotation + 'deg)',
-			transform: 'rotateY(' + state.rotation + 'deg)',
-		});
-		let i = 0;
-		for (; i < 3; i++) {
-			let element = $('#' + i + '.element');
-			if (i === state.front) {
-				element.css({ 'z-index': 1 });
-			} else {
-				element.css({ 'z-index': -1 });
-			}
-		}
+		ReactDOM.flushSync(() => {
+				this.setState((state:State) => ({...state, 
+					front: General.mod(state.front + (direction === 'n' ? 1 : -1) * number, 3), 
+					rotation: state.rotation + (direction === 'n' ? -1 : 1) * 120
+				}),
+				() => {
+					$('.carousel_').css({
+						'-webkit-transform': 'rotateY(' + this.state.rotation + 'deg)',
+						'-moz-transform': 'rotateY(' + this.state.rotation + 'deg)',
+						'-o-transform': 'rotateY(' + this.state.rotation + 'deg)',
+						transform: 'rotateY(' + this.state.rotation + 'deg)',
+					});
+					let i = 0;
+					for (; i < 3; i++) {
+						let element = $('#' + i + '.element');
+						let BG = $('#' + i + '.element .BG .content .cardgrid');
+						let container = $('.container_')
+						if (i === this.state.front) {
+							element.css({ 'z-index': 1 });
+							let bheight = BG.height();
+							container.css({'height':`${bheight! + 300}px`});
+						} else {
+							element.css({ 'z-index': -1 });
+						}
+					}
 
-		$(state.root).animate({ scrollTop: $('.carousel_')!.offset()!.top }, 300);
-		PageIndication.updatePageIndication(state.front);
-		e.stopPropagation();
+					$(this.state.root).animate({ scrollTop: $('.carousel_')!.offset()!.top }, 50);
+					PageIndication.updatePageIndication(this.state.front);
+					e.stopPropagation();
+				}
+			)
+		})
+		
 	}
 
 	render() {
@@ -92,14 +109,72 @@ export class Carousel extends Resizeable<Props, State> {
 				<div className="container_" style={{ width: this.state.width }}>
 					<div style={{ position: 'relative', width: '100%', height: '100%' }}>
 						<div className="carousel_">
-							<div className="element" id="0" style={{ width: this.state.width }}>
-								<ProjectPage wPercent={[100, 88.5]} hPercent={[100, 100]} />
+							<div className="element" id="0" style={{ width: this.state.width}}>
+								<CarouselPage wPercent={[100, 88.5]} hPercent={[200, 100]}>
+									<CardGrid cards={[
+										{description:"Gource Wizard",
+										picture:"/assets/Images/GourceWizard/GWiz_Logo.png",
+										style:{"background-color":"#ffffff"},
+										link:"#a"
+										},
+										{description:"Petsprout",
+										picture:"/assets/Images/Petsprout/Petsprout_Logo_Transparent.png",
+										style:{"background-color":"#353535"},
+										link:""
+										},
+										{description:"Find Dining",
+										picture:"/assets/Images/ScarboroughDining/Logo.png",
+										style:{"background-color":"#9B321E"},
+										link:""
+										},
+										{description:"INgest",
+										picture:"/assets/Images/Ingest/Logo.png",
+										style:{"background-color":"#4C3ECC"},
+										link:""
+										},
+										{description:"Robotics",
+										picture:"/assets/Images/Robotics/Logo.png",
+										style:{"background-size":"cover"},
+										link:""
+										}
+									]}/>
+								</CarouselPage>
 							</div>
 							<div className="element" id="1" style={{ width: this.state.width }}>
-								<ExperiencePage wPercent={[100, 88.5]} hPercent={[100, 100]} />
+								<CarouselPage wPercent={[100, 88.5]} hPercent={[160, 50]}>
+									<CardGrid cards={[
+										{description:"Caseware",
+										picture:"/assets/Images/Caseware/Logo.png",
+										style:{"background-color":"#ffffff"},
+										link:""
+										},{description:"Altairix",
+										picture:"/assets/Images/Altairix/Logo.png",
+										style:{"background-color":"#ffffff"},
+										link:""
+										}
+									]}/>
+								</CarouselPage>
 							</div>
 							<div className="element" id="2" style={{ width: this.state.width }}>
-								<HobbyPage wPercent={[100, 88.5]} hPercent={[100, 100]} />
+								<CarouselPage wPercent={[100, 88.5]} hPercent={[160, 100]}>
+									<CardGrid cards={[
+										{description:"Music",
+										picture:"",
+										style:{},
+										link:""
+										},
+										{description:"Cooking",
+										picture:"",
+										style:{},
+										link:""
+										},
+										{description:"Tennis",
+										picture:"",
+										style:{},
+										link:""
+										}
+									]}/>
+								</CarouselPage>
 							</div>
 						</div>
 					</div>
@@ -107,11 +182,11 @@ export class Carousel extends Resizeable<Props, State> {
 				<div className="base-float">
 					<div className="float-wrap">
 						<div className="prev">
-							<img src={ArrowL} alt="Left\nArrow" />
+							<img src="/assets/Icons/arrowL_transp.png" alt="Left\nArrow" />
 						</div>
 						<PageIndication />
 						<div className="next">
-							<img src={ArrowR} alt="Right\nArrow" />
+							<img src="/assets/Icons/arrowR_transp.png" alt="Right\nArrow" />
 						</div>
 					</div>
 				</div>

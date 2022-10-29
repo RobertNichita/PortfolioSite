@@ -1,7 +1,7 @@
 .contain {
 	height: 100%;
 	width: 100%;
-	background-color: var(--BG);
+	background-color: var(--FG2);
 	transition: background-color 3s;
 	border-radius: 20%/50%;
 	margin-left: 1vw;
@@ -18,7 +18,7 @@
 	transition: background-color 3s;
 	border-radius: 50%;
 	&.highlight {
-		background-color: var(--FG2);
+		background-color: var(--BG);
 		transition: background-color 3s;
 	}
 }
