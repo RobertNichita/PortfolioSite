@@ -111,30 +111,31 @@ export class Carousel extends Resizeable<Props, State> {
 						<div className="carousel_">
 							<div className="element" id="0" style={{ width: this.state.width}}>
 								<CarouselPage wPercent={[100, 88.5]} hPercent={[200, 100]}>
+									Projects
 									<CardGrid cards={[
 										{description:"Gource Wizard",
 										picture:"/assets/Images/GourceWizard/GWiz_Logo.png",
-										style:{"background-color":"#ffffff"},
+										style:{"backgroundColor":"#ffffff"},
 										link:"#a"
 										},
 										{description:"Petsprout",
 										picture:"/assets/Images/Petsprout/Petsprout_Logo_Transparent.png",
-										style:{"background-color":"#353535"},
+										style:{"backgroundColor":"#353535"},
 										link:""
 										},
 										{description:"Find Dining",
 										picture:"/assets/Images/ScarboroughDining/Logo.png",
-										style:{"background-color":"#9B321E"},
+										style:{"backgroundColor":"#9B321E"},
 										link:""
 										},
 										{description:"INgest",
 										picture:"/assets/Images/Ingest/Logo.png",
-										style:{"background-color":"#4C3ECC"},
+										style:{"backgroundColor":"#4C3ECC"},
 										link:""
 										},
 										{description:"Robotics",
 										picture:"/assets/Images/Robotics/Logo.png",
-										style:{"background-size":"cover"},
+										style:{"backgroundSize":"cover"},
 										link:""
 										}
 									]}/>
@@ -142,14 +143,15 @@ export class Carousel extends Resizeable<Props, State> {
 							</div>
 							<div className="element" id="1" style={{ width: this.state.width }}>
 								<CarouselPage wPercent={[100, 88.5]} hPercent={[160, 50]}>
+									Experience
 									<CardGrid cards={[
 										{description:"Caseware",
 										picture:"/assets/Images/Caseware/Logo.png",
-										style:{"background-color":"#ffffff"},
+										style:{"backgroundColor":"#ffffff"},
 										link:""
 										},{description:"Altairix",
 										picture:"/assets/Images/Altairix/Logo.png",
-										style:{"background-color":"#ffffff"},
+										style:{"backgroundColor":"#ffffff"},
 										link:""
 										}
 									]}/>
@@ -157,18 +159,19 @@ export class Carousel extends Resizeable<Props, State> {
 							</div>
 							<div className="element" id="2" style={{ width: this.state.width }}>
 								<CarouselPage wPercent={[100, 88.5]} hPercent={[160, 100]}>
+									Hobbies
 									<CardGrid cards={[
 										{description:"Music",
-										picture:"",
-										style:{},
+										picture:"/assets/Images/Music/Logo.png",
+										style:{"backgroundSize":"cover"},
 										link:""
 										},
 										{description:"Cooking",
-										picture:"",
-										style:{},
+										picture:"/assets/Images/Cooking/mushrooms_cooking.jpg",
+										style:{"backgroundSize":"cover"},
 										link:""
 										},
-										{description:"Tennis",
+										{description:"Gaming",
 										picture:"",
 										style:{},
 										link:""
