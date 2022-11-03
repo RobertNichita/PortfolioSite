@@ -25,7 +25,8 @@ export class Carousel extends Resizeable<Props, State> {
 		console.log('a' + this.state.front)
 		let BG = $('#' + this.state.front + '.element .BG .content .cardgrid');
 		let bheight = BG.height();
-		container.css({'height':`${bheight! + 200}px`});
+		console.log(`bheight: ${bheight}`)
+		container.css({'height':`${bheight! + 100}px`});
 	}
 
 	private debouncedResizeContainer = debounce(this.resizeContainer,50,{trailing:true});
@@ -83,16 +84,18 @@ export class Carousel extends Resizeable<Props, State> {
 					let i = 0;
 					for (; i < 3; i++) {
 						let element = $('#' + i + '.element');
-						let BG = $('#' + i + '.element .BG .content .cardgrid');
-						let container = $('.container_')
+						// let BG = $('#' + i + '.element .BG .content .cardgrid');
+						// let container = $('.container_')
 						if (i === this.state.front) {
 							element.css({ 'z-index': 1 });
-							let bheight = BG.height();
-							container.css({'height':`${bheight! + 300}px`});
+							// let bheight = BG.height();
+							// container.css({'height':`${bheight! + 300}px`});
 						} else {
 							element.css({ 'z-index': -1 });
 						}
 					}
+					
+					this.resizeContainer();
 
 					$(this.state.root).animate({ scrollTop: $('.carousel_')!.offset()!.top }, 50);
 					PageIndication.updatePageIndication(this.state.front);

@@ -6,7 +6,7 @@
 
 .base-float {
 	position: sticky;
-	bottom: 7vh;
+	bottom: 9vh;
 	width: 30vw;
 	height: 10vh;
 	width: 100%;
@@ -20,8 +20,10 @@
 
 .float-wrap{
 	display: flex;
+	flex-direction: row;
+	align-items: center;
 	width: 30vw;
-	height: 7vh;
+	height: 5vh;
 	z-index: 2;
 }
 
@@ -31,7 +33,7 @@
 	overflow-x: hidden;
 	margin-right: auto;
 	width: 100vw;
-	height: 250vh;
+	height: 200vh;
 	position: relative;
 	transition: background-color 3s, height 1s;
 }
@@ -71,23 +73,29 @@
 	opacity: 0.3;
 }
 
+.next,
+.prev {
+	height: 100%;
+	width: 3vw;
+}
+
+.next {
+	right: 1vw;
+}
+.prev {
+	left: 1vw;
+}
+
+img {
+	height: 100%;
+	width: 3vw;
+}
+
 @media (hover: hover) {
 	.next,
 	.prev {
-		height: 4vh;
-		width: 2vw;
 		cursor: pointer;
-		border-radius: 5px;
-		transition: box-shadow 0.1s, top 0.1s;
 	}
-	
-	img {
-		height: 4vh;
-		width: 2vw;
-	}
-}
-
-@media (hover: none) {
 }
 
 [data-landscape=landscape]{
@@ -108,28 +116,5 @@
 
 	.element {
 		width: 85vw;
-	}
-
-	@media (hover: hover) {
-		.next,
-		.prev {
-			height: 7vh;
-			width: 3vw;
-		}
-
-		.next {
-			right: 1vw;
-		}
-		.prev {
-			left: 1vw;
-		}
-
-		img {
-			height: 7vh;
-			width: 3vw;
-		}
-	}
-
-	@media (hover: none) {
 	}
 }
