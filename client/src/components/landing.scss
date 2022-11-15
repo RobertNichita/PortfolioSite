@@ -11,17 +11,50 @@ p {
     top: 10%;
     position: absolute;
     left: 10%;
+    p{
+        transition: color 3s;
+        font-size: 400%;
+        font-family: var(--Font1);
+        font-weight: bold;
+        font-style: italic;
+        text-shadow: -3px 3px 4px var(--FG);
+        strong{
+            text-shadow: -3px 3px 4px var(--FG);
+            font-size: 150%;
+        }
+        [data-theme=light]{
+           strong{
+                text-shadow: -3px 3px 4px var(--FG2);
+            } 
+        }
+    }
 }
 
 .am {
     line-height: 180%;
     color: var(--TEXT);
-    font-size: large;
-    right:20%;
-    top:40%;
-    width: 25%;
+    font-size: 150%;
+    right:10%;
+    top:50%;
+    width: 40%;
     position: absolute;
     text-align: right;
+    transition: color 3s;
+    font-family: var(--Font2);
+}
+
+.secret{
+    width: 25%;
+    height: 40%;
+    top: 87%;
+    right: 7%;
+    font-size: 200%;
+    font-family: var(--Font1);
+    font-weight: bold;
+    text-align: center;
+    transition: color 3s;
+    color: var(--TEXT);
+    position: absolute;
 }
 
 .face{
@@ -44,12 +77,12 @@ p {
 }
 
 .one{
-    width:44.25%;
+    width:50%;
 }
 
 .two{
-    width:44.25%;
-    left:44.25%;
+    width:50%;
+    left:50%;
     -moz-transform: scaleX(-1);
     -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
@@ -70,20 +103,31 @@ p {
     }
 
     .hi{
-        top: 5%;
+        top: 0%;
         left:0;
-        width: 40%;
-        margin-left:30%;
-        margin-right:30%;
+        width: 90%;
+        margin-left:5%;
+        margin-right:5%;
+        p{
+            font-size: 250%;
+            font-family: var(--Font1);
+            font-weight: bold;
+            font-style: italic;
+            text-shadow: -2px 2px 4px var(--FG);
+            strong{
+                text-shadow: -2px 2px 4px var(--FG);
+                font-size: 150%;
+            }
+        }
     }
 
     .am {
         text-align: center;
-        font-size: large;
+        font-size: 130%;
         right:0;
         margin-left:20%;
         margin-right:20%;
-        top:30%;
+        top:35%;
         width: 60%;
     }
     .face{
@@ -93,12 +137,15 @@ p {
         width:70%;
     }
 
-    .one{
-        width:50%;
-    }
-
-    .two{
-        width:50%;
-        left:50%;
+    .secret{
+        width: 35%;
+        height: 15%;
+        top: 88%;
+        right: 0%;
+        font-size: 170%;
+        font-family: var(--Font1);
+        transition: color 3s;
+        color: var(--TEXT);
+        position: absolute;
     }
 }

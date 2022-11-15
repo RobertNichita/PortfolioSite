@@ -26,7 +26,7 @@ export class Carousel extends Resizeable<Props, State> {
 		let BG = $('#' + this.state.front + '.element .BG .content .cardgrid');
 		let bheight = BG.height();
 		console.log(`bheight: ${bheight}`)
-		container.css({'height':`${bheight! + 100}px`});
+		container.css({'height':`${bheight! + 150}px`});
 	}
 
 	private debouncedResizeContainer = debounce(this.resizeContainer,50,{trailing:true});
@@ -42,10 +42,10 @@ export class Carousel extends Resizeable<Props, State> {
 		};
 
 		$(window).on('load', () => {
-			$('top').on('swiperight', { d: 'n'}, this.rotate);
+			
 			$('.next').on('click', { d: 'n', n: 1 }, this.rotate);
 			$('.prev').on('click', { d: 'p', n: 1 }, this.rotate);
-			// $(window).on('scroll', {}, this.hideBaseFloat);
+			
 			$(window).on('resize',this.debouncedResizeContainer);
 		});
 	}
@@ -64,7 +64,9 @@ export class Carousel extends Resizeable<Props, State> {
 		}
 	};
 
+	swipe = (e:any) => {
 
+	}
 
 	rotate = (e: any) => {
 		let direction = e.data.d;
@@ -108,7 +110,7 @@ export class Carousel extends Resizeable<Props, State> {
 
 	render() {
 		return (
-			<div className="top">
+			<div className="top" onTouchMove={(e)=> console.log(JSON.stringify(e))} >
 				<div className="container_" style={{ width: this.state.width }}>
 					<div style={{ position: 'relative', width: '100%', height: '100%' }}>
 						<div className="carousel_">
@@ -119,27 +121,27 @@ export class Carousel extends Resizeable<Props, State> {
 										{description:"Gource Wizard",
 										picture:"/assets/Images/GourceWizard/GWiz_Logo.png",
 										style:{"backgroundColor":"#ffffff"},
-										link:"#a"
+										link:"#/portfolioMd/GourceWizard"
 										},
 										{description:"Petsprout",
 										picture:"/assets/Images/Petsprout/Petsprout_Logo_Transparent.png",
 										style:{"backgroundColor":"#353535"},
-										link:""
+										link:"#/portfolioMd/Petsprout"
 										},
 										{description:"Find Dining",
 										picture:"/assets/Images/ScarboroughDining/Logo.png",
 										style:{"backgroundColor":"#9B321E"},
-										link:""
+										link:"#/portfolioMd/ScarboroughDining"
 										},
 										{description:"INgest",
 										picture:"/assets/Images/Ingest/Logo.png",
 										style:{"backgroundColor":"#4C3ECC"},
-										link:""
+										link:"#/portfolioMd/Ingest"
 										},
 										{description:"Robotics",
 										picture:"/assets/Images/Robotics/Logo.png",
 										style:{"backgroundSize":"cover"},
-										link:""
+										link:"#/portfolioMd/Robotics"
 										}
 									]}/>
 								</CarouselPage>
@@ -151,11 +153,11 @@ export class Carousel extends Resizeable<Props, State> {
 										{description:"Caseware",
 										picture:"/assets/Images/Caseware/Logo.png",
 										style:{"backgroundColor":"#ffffff"},
-										link:""
+										link:"#/portfolioMd/Caseware"
 										},{description:"Altairix",
 										picture:"/assets/Images/Altairix/Logo.png",
 										style:{"backgroundColor":"#ffffff"},
-										link:""
+										link:"#/portfolioMd/Altairix"
 										}
 									]}/>
 								</CarouselPage>
@@ -167,17 +169,17 @@ export class Carousel extends Resizeable<Props, State> {
 										{description:"Music",
 										picture:"/assets/Images/Music/Logo.png",
 										style:{"backgroundSize":"cover"},
-										link:""
+										link:"#/portfolioMd/Music"
 										},
 										{description:"Cooking",
 										picture:"/assets/Images/Cooking/mushrooms_cooking.jpg",
 										style:{"backgroundSize":"cover"},
-										link:""
+										link:"#/portfolioMd/Cooking"
 										},
 										{description:"Gaming",
 										picture:"",
 										style:{},
-										link:""
+										link:"#/portfolioMd/Gaming"
 										}
 									]}/>
 								</CarouselPage>
