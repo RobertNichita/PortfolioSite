@@ -42,7 +42,7 @@ export default class ContentContainer extends Resizeable<Props, State> {
 				.then((text)=>{
 					console.log("set"+text);
 					this.setState((state:State)=>{
-						return {...state, md:text}
+						return {...state, md:(text ? text : `# No Content in ${file}`)}
 					})
 				})
 				.catch((reason:any)=>{
