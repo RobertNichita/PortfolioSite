@@ -18,7 +18,7 @@ export default class CarouselPage extends Resizeable<Props,State> {
                 <div className="content">
                     {this.props.children}
                 </div>
-                <div className="base" style={{backgroundImage:"url(\"/assets/Images/NicePng_torn-paper-texture-png_cropped.png\")"}}/>
+                <div className="base" style={{backgroundImage:"url(\"assets/Images/NicePng_torn-paper-texture-png_cropped.png\")"}}/>
             </div>
             );
     }

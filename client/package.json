@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "homepage": "https://RobertNichita.github.io/PortfolioSite",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -15,6 +16,7 @@
     "lodash": "^4.17.21",
     "node-sass": "^6.0.0",
     "react-dom": "^17.0.1",
+    "react-hammerjs": "^1.0.1",
     "react-helmet": "^6.1.0",
     "react-markdown": "^8.0.3",
     "react-redux": "^7.2.4",
@@ -27,7 +29,9 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "prepublish": "npm run build",
+    "publish": "gh-pages -d build",
+    "start": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -58,10 +62,12 @@
     "@types/node": "^16.4.10",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
+    "@types/react-hammerjs": "^1.0.4",
     "@types/react-helmet": "^6.1.5",
     "@types/react-router-dom": "^5.1.8",
     "@types/react-toggle": "^4.0.3",
     "@types/webpack-env": "^1.18.0",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-scripts": "^4.0.3",

@@ -51,7 +51,7 @@
 	visibility: hidden;
 }
 
-.navbarText {
+.navbarTextButton {
 	font-size: 1.5vw;
 	font-family: var(--Font1);
 	text-align: center;
@@ -63,7 +63,18 @@
 	position: relative;
 }
 
-.navbarText div{
+.navbarTextButton:active{
+	transition: none;
+	color:var(--FG1);
+	background-color: var(--TEXT);
+}
+
+.navbarTextButton:hover{
+	transition: none;
+	color:var(--TEXT2);
+}
+
+.navbarTextButton div{
 	margin: inherit;
 }
 
@@ -73,6 +84,10 @@
 		color: var(--BG);
 	}
 	
+	.navbarTextButton:active{
+		background-color: var(--BG);
+		color:var(--TEXT);
+	}
 }
 
 [data-landscape=portrait]{

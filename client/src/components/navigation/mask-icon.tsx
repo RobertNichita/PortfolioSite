@@ -13,7 +13,7 @@ export default class NavIcon extends React.Component<Props, State> {
         "linkedin":"https://www.linkedin.com/in/robert-nichita-846075115/",
         "brand":"#aboutme",
     }
-    mask: string = `url(/assets/Icons/Social/${this.props.iconName}_transparent.svg)`
+    mask: string = `url(assets/Icons/Social/${this.props.iconName}_transparent.svg)`
 
 	render() {
 		return (

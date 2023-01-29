@@ -26,8 +26,8 @@ export default class Landing extends Resizeable<Props, State> {
                 <div className="secret">
                     Secrets down here &darr;
                 </div>
-                <div className="base_ one" style={{backgroundImage: "url(\"/assets/Images/NicePng_torn-paper-texture-png_cropped.png\")"}}/>
-                <div className="base_ two" style={{backgroundImage: "url(\"/assets/Images/NicePng_torn-paper-texture-png_cropped.png\")"}}/>
+                <div className="base_ one" style={{backgroundImage: "url(\"assets/Images/NicePng_torn-paper-texture-png_cropped.png\")"}}/>
+                <div className="base_ two" style={{backgroundImage: "url(\"assets/Images/NicePng_torn-paper-texture-png_cropped.png\")"}}/>
             </div>
         )
     }

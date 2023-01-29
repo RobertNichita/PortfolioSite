@@ -15,7 +15,7 @@ export default class ContentContainer extends Resizeable<Props, State> {
 	constructor(props:Props)
 	{
 		super(props);
-		$(window).on('load', ()=>{
+		$(window).on('load', () => {
 			$(window).on('hashchange', this.loadMarkdown)
 			this.loadMarkdown({originalEvent: {newURL:window.location.hash}})
 		})
@@ -34,19 +34,23 @@ export default class ContentContainer extends Resizeable<Props, State> {
 					return;
 				}
 				let file = URL.split('/')[2];
-				fetch(`/assets/Markdown/${file}.md`)
+				fetch(`assets/Markdown/${file}.md`)
 				.then((response)=>{
-					console.log("resp" + JSON.stringify(response));
+					// console.log("resp" + JSON.stringify(response));
 					return response.text();
 				})
 				.then((text)=>{
-					console.log("set"+text);
 					this.setState((state:State)=>{
 						return {...state, md:(text ? text : `# No Content in ${file}`)}
+					}, () => {
+						// console.log(`top:${$(".content_container").offset()?.top!}`);
+						$([document.documentElement, document.body]).animate({
+							scrollTop: $(".content_container").offset()?.top! - 100 +"px"
+						},250)
 					})
 				})
 				.catch((reason:any)=>{
-					console.log("error")
+					// console.log("error")
 					this.setState((state:State)=>{
 						return {...state, md:""}
 					})

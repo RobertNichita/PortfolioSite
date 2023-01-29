@@ -39,7 +39,7 @@ function App() {
 						<Route path="/">
 							<Navigation wPercent={[100,10]} hPercent={[10,100]}/>
 							<Landing wPercent={[100,88.5]} hPercent={[90,100]} />
-							<Carousel floatOffsetBottom={0} wPercent={[100,88.5]} hPercent={[300,300]}/>
+							<Carousel pages={3} floatOffsetBottom={0} wPercent={[100,88.5]} hPercent={[300,300]}/>
 							<ContentContainer wPercent={[90,78.5]} hPercent={[100,100]} />
 							<RootResize>
 							</RootResize>
