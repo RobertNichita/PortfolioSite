@@ -1,130 +1,121 @@
-@media (max-aspect-ratio:1/1){
-    
-    .container {
-        background:#333;
-        overflow: hidden;
-        overflow-x: hidden;
-        margin: 0 auto;
-        width: 100vw;
-        height: 300vh;
-        position: relative;
-    }
-    
-    .carousel {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        transform-style: preserve-3d;
-        transition: transform 2s;
-    }
-    
-    .element {
-        display: block;
-        position: absolute;
-        width: 100vw;
-        height: 300vh;
-        line-height: 200px;
-        color: #FFF;
-    }
-
-    @for $i from 1 through 3{
-        .element:nth-of-type(#{$i}) {
-            transform: rotateY(360deg/3 * (($i)-1)) translateZ(40vw) ;
-        }
-    }
-
-    @media (hover:hover){
-        
-    .next, .prev {
-        height: 7vh;
-        width: 14vw;
-        position: fixed;
-        bottom:20vh;
-        cursor: pointer;
-        border-radius: 5px;
-        transition: box-shadow 0.1s, top 0.1s;
-    }
-
-        .next:active, .prev:active {
-            bottom: 19vh;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .next { right: 3vw; }
-        .prev { left: 3vw; }
-        img{
-            height: 7vh;
-            width: 14vw;
-        }
-    }
-
-    @media (hover:none){
-
-    }
+.top {
+	position: relative;
+	margin-right: auto;
+	height: 300%;
 }
-@media (min-aspect-ratio:1/1){
-    
-    .container {
-        background: #159;
-        overflow: hidden;
-        overflow-x: hidden;
-        margin: 0 auto;
-        width: 100vw;
-        height: 300vh;
-        position: relative;
-    }
-    
-    .carousel {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        transform-style: preserve-3d;
-        transition: transform 2s;
-    }
-    
-    .element {
-        display: block;
-        position: absolute;
-        width: 100vw;
-        height: 300vh;
-        line-height: 200px;
-    }
 
-    @for $i from 1 through 3{
-        .element:nth-of-type(#{$i}) {
-            transform: rotateY(360deg/3 * (($i)-1)) translateZ(40vw) ;
-        }
-    }
+.base-float {
+	position: sticky;
+	bottom: 9vh;
+	width: 30vw;
+	height: 10vh;
+	width: 100%;
+	z-index: 2;
+	// transition: all 0.1s ease-in-out;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
 
+.float-wrap{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 30vw;
+	height: 5vh;
+	z-index: 2;
+}
 
+.container_ {
+	background-color: var(--FG);
+	overflow: hidden;
+	overflow-x: hidden;
+	margin-right: auto;
+	width: 100vw;
+	height: 200vh;
+	position: relative;
+	transition: background-color 3s, height 1s;
+}
 
+.carousel_ {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: transform 2s;
+}
 
-    @media (hover:hover){
-        
-        .next, .prev {
-            height: 7vh;
-            width: 7vw;
-            position: fixed;
-            bottom:20vh;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: box-shadow 0.1s, top 0.1s;
-        }
+.element {
+	backface-visibility: hidden;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
 
-        .next:active, .prev:active {
-            bottom: 19vh;
-            -webkit-tap-highlight-color: transparent;
-        }
+	@for $i from 1 through 3 {
+		&:nth-of-type(#{$i}) {
+			@if ($i == 1) {
+				z-index: 1;
+			} @else {
+				z-index: -1;
+			}
 
-        .next { right: 1vw; }
-        .prev { left: 1vw; }
+			transform: rotateY(360deg/3 * (($i)-1)) translateZ(40vw);
+		}
+	}
+}
 
-        img{
-            height: 7vh;
-            width: 7vw;
-        }
-    }
+.element .base{
+	background-size: cover;
+	background-repeat: repeat-y;
+	position: absolute;
+	opacity: 0.3;
+}
 
-    @media (hover:none){
+.next,
+.prev {
+	height: 100%;
+	width: 3vw;
+}
 
-    }
+.next {
+	right: 1vw;
+}
+.prev {
+	left: 1vw;
+}
+
+.next img,
+.prev img {
+	height: 100%;
+	width: 3vw;
+}
+
+@media (hover: hover) {
+	.next,
+	.prev {
+		cursor: pointer;
+	}
+}
+
+[data-landscape=landscape]{
+	.base-float {
+		width: 88vw;
+		bottom: 3vh;
+	}
+
+	.float-wrap{
+		width: 25vw;
+		height: 7vh;
+	}
+
+	.container_ {
+		width: 85vw;
+		height: 120vh;
+	}
+
+	.element {
+		width: 85vw;
+	}
 }

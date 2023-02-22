@@ -1,13 +1,55 @@
-@media(min-aspect-ratio:1/1){
-    body {
-        padding: 15vh 0;
-        font: 15px/20px Arial, sans-serif;
-    }
+p {
+	font-family: var(--Font2);
 }
 
-@media(max-aspect-ratio:1/1){
-    body {
-        padding: 15vh 0;
-        font: 15px/20px Arial, sans-serif;
-    }
+h1 {
+	font-family: var(--Font1);
+}
+
+:root {
+	--BG: #3f3649;
+	--FG: #0e052e;
+	--FG2: #27212d;
+	--TEXT: #d3bddb;
+	--TEXT2: #bc88cf;
+	--BLACK: #010400ff;
+	--WHITE: #ecffe6;
+	--Font1: "ralewaythin";
+	--Font2: "Inter";
+}
+
+[data-theme='light'] {
+	--BG: #8ccbd9;
+	--FG: #266473;
+	--FG2: #0e252b;
+	--TEXT: #1f0079;
+	--TEXT2: #8ccbd9;
+}
+
+@font-face {
+	font-family: maliregular;
+	src:
+		url('./Fonts/webfontkit-Mali/mali-regular-webfont.woff2') format('woff2'),
+		url('./Fonts/webfontkit-Mali/mali-regular-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: ralewaythin;
+	src:
+		url('./Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff2') format('woff2'),
+		url('./Fonts/webfontkit-Raleway/raleway-variablefont_wght-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: Inter;
+	src:
+		url('./Fonts/Inter/Inter-VariableFont_slnt\,wght.ttf') format('truetype'),
+		url('./Fonts/Inter/Inter-Regular.woff') format('woff'),
+		url('./Fonts/Inter/Inter-Regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
 }

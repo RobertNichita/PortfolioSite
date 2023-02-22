@@ -39,3 +39,5 @@ out/
 
 ### React ###
 /node_modules
+
+*.Zone*

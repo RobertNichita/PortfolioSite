@@ -1,0 +1,153 @@
+p {
+    line-height: 150%;
+    color: var(--TEXT);
+    font-size: x-large;
+    margin: 0;
+    width: 100%;
+    left: 5%;
+}
+
+.hi{
+    top: 5%;
+    position: absolute;
+    left: 10%;
+    flex: auto;
+    flex-direction: column;
+    justify-content: center;
+    p{
+        transition: color 3s;
+        font-size: 400%;
+        font-family: var(--Font1);
+        font-weight: bold;
+        font-style: italic;
+        text-shadow: -3px 3px 4px var(--FG);
+        strong{
+            text-shadow: -3px 3px 4px var(--FG);
+            font-size: 150%;
+        }
+        [data-theme=light]{
+           strong{
+                text-shadow: -3px 3px 4px var(--FG2);
+            } 
+        }
+    }
+}
+
+.am {
+    line-height: 140%;
+    color: var(--TEXT);
+    font-size: 130%;
+    right:10%;
+    top:53%;
+    width: 40%;
+    position: absolute;
+    text-align: right;
+    transition: color 3s;
+    font-family: var(--Font2);
+}
+
+.secret{
+    width: 30%;
+    height: 40%;
+    top: 87%;
+    right: 7%;
+    font-size: 200%;
+    font-family: var(--Font1);
+    font-weight: bold;
+    text-align: center;
+    transition: color 3s;
+    color: var(--TEXT);
+    position: absolute;
+}
+
+.face{
+    width: 40%;
+    height: 40%;
+    top: 60%;
+    left: 10%;
+    position: absolute;
+}
+
+.base_ {
+	background-size: 100% 100%;
+	background-repeat: repeat-x;
+	position: absolute;
+	opacity: 0.15;
+	height: 100%;
+	top:0;
+}
+
+.one{
+    width:50%;
+}
+
+.two{
+    width:50%;
+    left:50%;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.landing{
+    background-size: cover;
+    position: relative;
+}
+
+[data-landscape=portrait]{
+
+    .landing{
+        text-align: center;
+        position: relative;
+    }
+
+    .hi{
+        top: 0%;
+        left:0;
+        width: 90%;
+        margin-left:5%;
+        margin-right:5%;
+        p{
+            font-size: 250%;
+            font-family: var(--Font1);
+            font-weight: bold;
+            font-style: italic;
+            text-shadow: -2px 2px 4px var(--FG);
+            strong{
+                text-shadow: -2px 2px 4px var(--FG);
+                font-size: 150%;
+            }
+        }
+    }
+
+    .am {
+        text-align: center;
+        font-size: 130%;
+        right:0;
+        margin-left:20%;
+        margin-right:20%;
+        top:35%;
+        width: 60%;
+    }
+    .face{
+        top:auto;
+        bottom:0;
+        left:15%;
+        width:70%;
+    }
+
+    .secret{
+        width: 35%;
+        height: 15%;
+        top: 88%;
+        right: 0%;
+        font-size: 170%;
+        font-family: var(--Font1);
+        transition: color 3s;
+        color: var(--TEXT);
+        position: absolute;
+    }
+}

@@ -1,0 +1,163 @@
+.nav-contain {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	z-index: 2;
+	background-color: var(--FG2);
+			transition-delay: 50ms, 0ms, 250ms, 250ms;
+		transition-property: background-color, width, height;
+		transition-duration: 3s, 250ms, 250ms;
+
+	overflow-x: hidden;
+	text-align: center;
+	padding: 1em;
+}
+
+.icons{
+	margin-top: auto;
+	display: flex;
+	flex-direction: row;
+	width: 90%;
+	height: 10%;
+	position: relative;
+	bottom:0;
+}
+
+.clamp {
+	right: 0;
+	bottom: 0;
+	height: 100vh;
+	width: 10vw;
+}
+
+.nav {
+	position: relative;
+	margin-left: 2vh;
+	margin-right: 2vh;
+	height: fit-content;
+	width: 90%;
+	background-color: var(--FG);
+	transition: background-color 3s, border-color 3s;
+	border-radius: 10% / 25%;
+	border-width: 2px;
+	border-color: var(--BG);
+	border-style: solid;
+	margin: 0.5em 0;
+}
+
+.navbarHamburger{
+	visibility: hidden;
+}
+
+.navbarTextButton {
+	font-size: 1.5vw;
+	font-family: var(--Font1);
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--TEXT);
+	transition: background-color 3s, color 3s, border-color 3s;
+	justify-content: center;
+	position: relative;
+}
+
+.navbarTextButton:active{
+	transition: none;
+	color:var(--FG1);
+	background-color: var(--TEXT);
+}
+
+.navbarTextButton:hover{
+	transition: none;
+	color:var(--TEXT2);
+}
+
+.navbarTextButton div{
+	margin: inherit;
+}
+
+[data-theme=light]
+{
+	.navbarText{
+		color: var(--BG);
+	}
+	
+	.navbarTextButton:active{
+		background-color: var(--BG);
+		color:var(--TEXT);
+	}
+}
+
+[data-landscape=portrait]{
+
+	.nav {
+		margin: auto 1em;
+		width: fit-content;
+	}
+
+	.icons{
+		margin-top: 0;
+		display: flex;
+		flex-direction: row;
+		width: 69%;
+		height: 67%;
+		position: relative;
+	}
+
+	.navbarHamburger {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 10vw;
+		height: 5.5vh;
+		left:0;
+		position: relative;
+		visibility: visible;
+		background-color: var(--FG);
+		transition: background-color 3s;
+		border-radius: 20% /25%;
+		border-width: 0;
+	}
+
+	.navbarHamburger div {
+		height: 0.7vh;
+		width: 6vw;
+		margin: 0.4vh;
+		background-color: var(--FG2);
+		transition: background-color 3s;
+		border-radius: 30% / 30%;
+	}
+
+	.navbarText {
+		visibility: hidden;
+		width: 0;
+		margin: 0;
+		border-width: 0;
+		position: absolute;
+	}
+
+	.nav-contain {
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		z-index: 3;
+		overflow-y: hidden;
+		padding: 0;
+		transition-delay: 50ms, 0ms, 250ms;
+		transition-property: background-color, height, width;
+		transition-duration: 3s, 250ms, 1s;
+
+	}
+
+	.clamp {
+		bottom: 0;
+		right: 0;
+		height: 10vh;
+		width: 100vw;
+	}
+}

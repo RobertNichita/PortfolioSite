@@ -1,0 +1,32 @@
+.contain {
+	height: 100%;
+	width: 100%;
+	background-color: var(--FG2);
+	transition: background-color 3s;
+	border-radius: 20%/50%;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	flex-direction: row;
+	display: flex;
+}
+
+.indicator {
+	margin: auto;
+	width: 25%;
+	height: 60%;
+	background-color: var(--FG);
+	transition: background-color 3s;
+	border-radius: 50%;
+	&.highlight {
+		background-color: var(--BG);
+		transition: background-color 3s;
+	}
+}
+
+[data-landscape=portrait]{
+	.contain {
+		height: 100%;
+		width: 100%;
+		border-radius: 20%/50%;
+	}
+}

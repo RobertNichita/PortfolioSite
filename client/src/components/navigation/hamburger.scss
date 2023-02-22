@@ -1,0 +1,38 @@
+.hamburger{
+    position:absolute;
+    bottom: 10%;
+}
+
+.ham {
+	position: relative;
+	margin-left: 2vh;
+	margin-right: 2vh;
+	height: fit-content;
+	width: 90%;
+	background-color: var(--FG);
+	transition: background-color 3s, border-color 3s;
+	border-radius: 10% / 25%;
+	border-width: 2px;
+	border-color: var(--BG);
+	border-style: solid;
+	margin: 0.5em 0;
+}
+
+.hamText {
+	font-size: 1.5vw;
+	font-family: var(--Font1);
+	text-align: center;
+	font-weight: bold;
+	text-decoration: none;
+	color: var(--TEXT);
+	transition: background-color 3s, color 3s, border-color 3s;
+	justify-content: center;
+	position: relative;
+}
+
+[data-landscape=landscape]{
+    .hamburger{
+        size:0;
+        left:999em;
+    }
+}

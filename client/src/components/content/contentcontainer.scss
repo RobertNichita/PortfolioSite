@@ -1,0 +1,14 @@
+.content_container{
+    padding:5%;
+    color: var(--TEXT);
+    font-family: var(--Font2);
+    transition: color 3s;
+    img {
+        height: 40%;
+        width: auto;
+    }
+}
+
+p{
+    font-size: medium;
+}
