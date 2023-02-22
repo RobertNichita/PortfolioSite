@@ -4,7 +4,7 @@ import React from 'react';
 export type CardProps = {
     description:string,
     picture:string,
-    style:{[property:string]:string},
+    style:{[property: string]:string | undefined;},
     link:string,
     id?:number
 };

@@ -9,6 +9,7 @@ import store from '../../redux/Store/store';
 import Resizable, { ResizableProps, ResizableState } from '../util/resizeable';
 import NavIcon from './mask-icon'
 import Hamburger from './hamburger'
+import $ from 'jquery'
 
 type Props = ResizableProps;
 
@@ -40,16 +41,16 @@ export default class Navigation extends Resizable<Props, State> {
 					<div></div>	
 				</a>
 				<Hamburger visible={this.state.hamburgerToggle}></Hamburger>
-				<button className="navbarTextButton nav">
+				<button className="navbarTextButton nav" id="Z" onClick={()=> {$('html, body').animate({scrollTop:0},250)}}>
 					<div>About</div>
 				</button>
-				<button className="navbarTextButton nav">
+				<button className="navbarTextButton nav" id="a">
 					<div>Projects</div>
 				</button>
-				<button className="navbarTextButton nav">
+				<button className="navbarTextButton nav" id="b">
 					<div>Experience</div>
 				</button>
-				<button className="navbarTextButton nav">
+				<button className="navbarTextButton nav" id="c">
 					<div>Hobbies</div>
 				</button>
 				

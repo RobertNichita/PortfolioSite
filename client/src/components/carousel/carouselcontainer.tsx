@@ -1,5 +1,6 @@
 import './carouselcontainer.scss';
 import $ from 'jquery';
+import carouselItems from '../../carouselItems.json';
 import { SwipeDirection } from '../../const/HammerConst';
 import React, { EventHandler, useCallback } from 'react';
 import { General } from '../../utils/general';
@@ -46,7 +47,9 @@ export class Carousel extends Resizeable<Props, State> {
 		$(window).on('load', () => {
 			$('.next').on('click', { d: 'n', n: 1 }, this.rotate);
 			$('.prev').on('click', { d: 'p', n: 1 }, this.rotate);
-			$();
+			$('#a.navbarTextButton').on('click', {n: 0}, this.rotateTo);
+			$('#b.navbarTextButton').on('click', {n: 1}, this.rotateTo);
+			$('#c.navbarTextButton').on('click', {n: 2}, this.rotateTo);
 			
 			$(window).on('resize',this.debouncedResizeContainer);
 		});
@@ -54,7 +57,7 @@ export class Carousel extends Resizeable<Props, State> {
 
 	swipe = (e:any) => {
 		e.data = {
-			d : (e.direction == SwipeDirection.LEFT ? 'n' : 'p'),
+			d : (e.direction === SwipeDirection.LEFT ? 'n' : 'p'),
 			n : 1,
 		}
 		e.stopPropagation = () => {};
@@ -63,40 +66,16 @@ export class Carousel extends Resizeable<Props, State> {
 
 	rotateTo = (e:any) => {
 		let number = e.data.n;
+
 		ReactDOM.flushSync(() => {
 				this.setState((state:State) => { 
-					return {...state, 
-						front: number,
-						rotation: number * (360/this.props.pages)
+					let diff = state.front - number;
+					return {...state,
+						front: General.mod(state.front - diff, this.props.pages),
+						rotation: state.rotation + diff * (360/this.props.pages)
 					}
 				},
-				() => {
-					$('.carousel_').css({
-						'-webkit-transform': 'rotateY(' + this.state.rotation + 'deg)',
-						'-moz-transform': 'rotateY(' + this.state.rotation + 'deg)',
-						'-o-transform': 'rotateY(' + this.state.rotation + 'deg)',
-						transform: 'rotateY(' + this.state.rotation + 'deg)',
-					});
-					let i = 0;
-					for (; i < 3; i++) {
-						let element = $('#' + i + '.element');
-						// let BG = $('#' + i + '.element .BG .content .cardgrid');
-						// let container = $('.container_')
-						if (i === this.state.front) {
-							element.css({ 'z-index': 1 });
-							// let bheight = BG.height();
-							// container.css({'height':`${bheight! + 300}px`});
-						} else {
-							element.css({ 'z-index': -1 });
-						}
-					}
-					
-					this.resizeContainer();
-
-					$(this.state.root).animate({ scrollTop: $('.carousel_')!.offset()!.top }, 250);
-					PageIndication.updatePageIndication(this.state.front);
-					e.stopPropagation();
-				}
+				() => this.applyRotation(e)
 			)
 		})
 	}
@@ -106,10 +85,15 @@ export class Carousel extends Resizeable<Props, State> {
 		let number = e.data.n;
 		ReactDOM.flushSync(() => {
 			this.setState((state:State) => ({...state, 
-					front: General.mod(state.front + (direction === 'n' ? 1 : -1) * number, 3), 
-					rotation: state.rotation + (direction === 'n' ? -1 : 1) * (360/3)
+					front: General.mod(state.front + (direction === 'n' ? 1 : -1) * number, this.props.pages), 
+					rotation: state.rotation + (direction === 'n' ? -1 : 1) * (360/this.props.pages)
 				}),
-				() => {
+				() => this.applyRotation(e)
+			)
+		})
+	}
+
+	applyRotation = (e:any) => {
 					$('.carousel_').css({
 						'-webkit-transform': 'rotateY(' + this.state.rotation + 'deg)',
 						'-moz-transform': 'rotateY(' + this.state.rotation + 'deg)',
@@ -135,9 +119,6 @@ export class Carousel extends Resizeable<Props, State> {
 					$(this.state.root).animate({ scrollTop: $('.carousel_')!.offset()!.top }, 250);
 					PageIndication.updatePageIndication(this.state.front);
 					e.stopPropagation();
-				}
-			)
-		})
 	}
 
 	render() {
@@ -147,76 +128,17 @@ export class Carousel extends Resizeable<Props, State> {
 					<div className="container_" style={{ width: this.state.width }}>
 						<div style={{ position: 'relative', width: '100%', height: '100%' }}>
 							<div className="carousel_">
-								<div className="element" id="0" style={{ width: this.state.width}}>
-									<CarouselPage wPercent={[100, 88.5]} hPercent={[200, 100]}>
-										Projects
-										<CardGrid cards={[
-											{description:"Gource Wizard",
-											picture:"assets/Images/GourceWizard/GWiz_Logo.png",
-											style:{"backgroundColor":"#ffffff"},
-											link:"#/portfolioMd/GourceWizard"
-											},
-											{description:"Petsprout",
-											picture:"assets/Images/Petsprout/Petsprout_Logo_Transparent.png",
-											style:{"backgroundColor":"#353535"},
-											link:"#/portfolioMd/Petsprout"
-											},
-											{description:"Find Dining",
-											picture:"assets/Images/ScarboroughDining/Logo.png",
-											style:{"backgroundColor":"#9B321E"},
-											link:"#/portfolioMd/ScarboroughDining"
-											},
-											{description:"INgest",
-											picture:"assets/Images/Ingest/Logo.png",
-											style:{"backgroundColor":"#4C3ECC"},
-											link:"#/portfolioMd/Ingest"
-											},
-											{description:"Robotics",
-											picture:"assets/Images/Robotics/Logo.png",
-											style:{"backgroundSize":"cover"},
-											link:"#/portfolioMd/Robotics"
-											}
-										]}/>
-									</CarouselPage>
-								</div>
-								<div className="element" id="1" style={{ width: this.state.width }}>
-									<CarouselPage wPercent={[100, 88.5]} hPercent={[160, 50]}>
-										Experience
-										<CardGrid cards={[
-											{description:"Caseware",
-											picture:"assets/Images/Caseware/Logo.png",
-											style:{"backgroundColor":"#ffffff"},
-											link:"#/portfolioMd/Caseware"
-											},{description:"Altairix",
-											picture:"assets/Images/Altairix/Logo.png",
-											style:{"backgroundColor":"#ffffff"},
-											link:"#/portfolioMd/Altairix"
-											}
-										]}/>
-									</CarouselPage>
-								</div>
-								<div className="element" id="2" style={{ width: this.state.width }}>
-									<CarouselPage wPercent={[100, 88.5]} hPercent={[160, 100]}>
-										Hobbies
-										<CardGrid cards={[
-											{description:"Music",
-											picture:"assets/Images/Music/Logo.png",
-											style:{"backgroundSize":"cover"},
-											link:"#/portfolioMd/Music"
-											},
-											{description:"Cooking",
-											picture:"assets/Images/Cooking/mushrooms_cooking.jpg",
-											style:{"backgroundSize":"cover"},
-											link:"#/portfolioMd/Cooking"
-											},
-											{description:"Gaming",
-											picture:"",
-											style:{},
-											link:"#/portfolioMd/Gaming"
-											}
-										]}/>
-									</CarouselPage>
-								</div>
+								{carouselItems.Pages.map((Page,index) => {
+									return(
+										<div className="element" id={`${index}`} style={{ width: this.state.width}}>
+											<CarouselPage 	wPercent={[Page.Dimensions.Portrait.Width, Page.Dimensions.Landscape.Width]} 
+															hPercent={[Page.Dimensions.Portrait.Height, Page.Dimensions.Landscape.Height]}>
+												{Page.Title}
+												<CardGrid cards={Page.Cards}/>
+											</CarouselPage>
+										</div>
+									)
+								})}
 							</div>
 						</div>
 					</div>
