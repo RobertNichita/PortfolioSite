@@ -111,26 +111,26 @@ p {
         margin-left:5%;
         margin-right:5%;
         p{
-            font-size: 250%;
+            font-size: 6vw;
             font-family: var(--Font1);
             font-weight: bold;
             font-style: italic;
             text-shadow: -2px 2px 4px var(--FG);
             strong{
                 text-shadow: -2px 2px 4px var(--FG);
-                font-size: 150%;
+                font-size: 1.5em;
             }
         }
     }
 
     .am {
         text-align: center;
-        font-size: 130%;
+        font-size: 4vw;
         right:0;
-        margin-left:20%;
-        margin-right:20%;
+        margin-left:15%;
+        margin-right:15%;
         top:35%;
-        width: 60%;
+        width: 70%;
     }
     .face{
         top:auto;
@@ -140,11 +140,12 @@ p {
     }
 
     .secret{
+        background-color: rgba(var(--BG), 0.8);
         width: 35%;
         height: 15%;
-        top: 88%;
+        top: 83%;
         right: 0%;
-        font-size: 170%;
+        font-size: 4vh;
         font-family: var(--Font1);
         transition: color 3s;
         color: var(--TEXT);
