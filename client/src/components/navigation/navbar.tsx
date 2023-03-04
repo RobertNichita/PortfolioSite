@@ -23,24 +23,24 @@ type State = ResizableState & innerState;
 export default class Navigation extends Resizable<Props, State> {
 	constructor(props: Props) {
 		super(props);
-		this.setState({ ...this.state, isToggled: false, hamburgerToggle: false });
+		this.state={isToggled: false, hamburgerToggle: false };
 	}
 
 
-	toggleHamburger = () => {
-		this.setState((state:State) => {return {...state, hamburgerToggle:!state.hamburgerToggle}})
+	toggleHamburger = (toggle:boolean) => {
+		this.setState((state:State) => {return {...state, hamburgerToggle:toggle}})
 	}
 
 
 	render() {
 		return (
 			<div className="nav-contain clamp" style={this.getStyle()}>
-				<a href="#home" className="navbarHamburger nav" onClick={this.toggleHamburger}>
+				<a href="#home" className="navbarHamburger nav" onMouseDown={()=>this.toggleHamburger(false)} onMouseUp={()=>this.toggleHamburger(true)}>
 					<div></div>
 					<div></div>
 					<div></div>	
 				</a>
-				<Hamburger visible={this.state.hamburgerToggle}></Hamburger>
+				<Hamburger opened={this.state.hamburgerToggle}></Hamburger>
 				<button className="navbarTextButton nav" id="Z" onClick={()=> {$('html, body').animate({scrollTop:0},250)}}>
 					<div>About</div>
 				</button>

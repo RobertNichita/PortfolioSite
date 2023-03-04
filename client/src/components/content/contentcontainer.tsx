@@ -15,10 +15,11 @@ export default class ContentContainer extends Resizeable<Props, State> {
 	constructor(props:Props)
 	{
 		super(props);
-		$(window).on('load', () => {
-			$(window).on('hashchange', this.loadMarkdown)
-			this.loadMarkdown({originalEvent: {newURL:window.location.hash}})
-		})
+	}
+
+	componentDidMount(): void {
+		$(window).on('hashchange', this.loadMarkdown);
+		this.loadMarkdown({originalEvent: {newURL:window.location.hash}})
 	}
 
 	loadMarkdown = debounce(async (e:any) => {

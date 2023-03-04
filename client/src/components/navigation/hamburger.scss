@@ -1,14 +1,17 @@
 .hamburger{
     position:absolute;
-    bottom: 10%;
+    bottom: 100%;
+	margin:auto;
 }
 
 .ham {
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	margin-left: 2vh;
 	margin-right: 2vh;
-	height: fit-content;
-	width: 90%;
+	height: 100px;
+	width: 100px;
 	background-color: var(--FG);
 	transition: background-color 3s, border-color 3s;
 	border-radius: 10% / 25%;
@@ -16,6 +19,8 @@
 	border-color: var(--BG);
 	border-style: solid;
 	margin: 0.5em 0;
+	z-index: 100;
+	overflow: visible;
 }
 
 .hamText {
@@ -24,7 +29,7 @@
 	text-align: center;
 	font-weight: bold;
 	text-decoration: none;
-	color: var(--TEXT);
+	color: #FFFFFF;
 	transition: background-color 3s, color 3s, border-color 3s;
 	justify-content: center;
 	position: relative;

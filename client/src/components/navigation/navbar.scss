@@ -139,6 +139,14 @@
 		position: absolute;
 	}
 
+	.navbarTextButton{
+		visibility: collapse;
+		width: 0;
+		padding: 0;
+		border:0;
+		margin:0;
+	}
+
 	.nav-contain {
 		position: fixed;
 		display: flex;
@@ -155,6 +163,7 @@
 	}
 
 	.clamp {
+		overflow: visible;
 		bottom: 0;
 		right: 0;
 		height: 10vh;

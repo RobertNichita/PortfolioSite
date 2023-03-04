@@ -1,29 +1,55 @@
 import './hamburger.scss';
 import React from 'react';
+import $ from 'jquery';
 
 type Props = {
-	visible: Boolean
+	opened: Boolean
 };
 
-type State = {};
+type State = {visible:boolean};
 
 export default class Hamburger extends React.Component<Props, State> {
+	constructor(props:Props){
+		super(props);
+		this.state={visible:false};
+	}
+
+	componentDidMount(): void {
+		$(".hamburger").on("focusout",(e)=>{
+			console.log('a');
+			this.setState((state)=>{
+				return {...state, visible:false}
+			});
+		});
+	}
+	
+	componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+		if(prevProps.opened === false && this.props.opened === true){
+			this.setState((state)=>{
+				return {...state, visible:true}
+			},()=>{
+				console.log('b');
+				$(".hamburger").get()[0].focus();
+			})
+		}
+	}
 
 	render() {
 		return (
-            <div className="hamburger" style={{visibility:(this.props.visible?"visible":"hidden")}}>
-				<a href="#aboutme" className="hamText ham">
-					<div>About</div>
-				</a>
-				<a href="#projects" className="hamText ham">
-					<div>Projects</div>
-				</a>
-				<a href="#experience" className="hamText ham">
-					<div>Experience</div>
-				</a>
-				<a href="#hobbies" className="hamText ham">
-					<div>Hobbies</div>
-				</a>
+            <div tabIndex={-1} className="hamburger" 
+				style={{visibility:(this.state.visible?"visible":"hidden")}}>
+				<div className="hamText ham" onClick={()=> {$('html, body').animate({scrollTop:0},250)}}>
+					About
+				</div>
+				<div id="d" className="hamText ham">
+					Projects
+				</div>
+				<div id="e" className="hamText ham">
+					Experience
+				</div>
+				<div id="f" className="hamText ham">
+					Hobbies
+				</div>
             </div>
 		);
 	}
